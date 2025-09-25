@@ -1,0 +1,198 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d413eb0138d544cc975b7720471411bb, type: 3}
+  m_Name: LevelConfig
+  m_EditorClassIdentifier: 
+  Levels:
+  - levelId: 1
+    levelStatusId: 4
+    levelSeconds: 60
+    gameResource: 3
+    grid:
+      X: 2
+      Y: 2
+      columns:
+      - rows: 0001
+      - rows: 0100
+  - levelId: 2
+    levelStatusId: 3
+    levelSeconds: 120
+    gameResource: 3
+    grid:
+      X: 2
+      Y: 2
+      columns:
+      - rows: 0100
+      - rows: 0001
+  - levelId: 3
+    levelStatusId: 3
+    levelSeconds: 120
+    gameResource: 5
+    grid:
+      X: 3
+      Y: 2
+      columns:
+      - rows: 0100
+      - rows: 0100
+      - rows: 0001
+  - levelId: 4
+    levelStatusId: 3
+    levelSeconds: 120
+    gameResource: 5
+    grid:
+      X: 3
+      Y: 2
+      columns:
+      - rows: 0100
+      - rows: 0001
+      - rows: 0100
+  - levelId: 5
+    levelStatusId: 3
+    levelSeconds: 120
+    gameResource: 5
+    grid:
+      X: 3
+      Y: 2
+      columns:
+      - rows: 0001
+      - rows: 0100
+      - rows: 0001
+  - levelId: 6
+    levelStatusId: 3
+    levelSeconds: 120
+    gameResource: 4
+    grid:
+      X: 2
+      Y: 3
+      columns:
+      - rows: 010100
+      - rows: 000100
+  - levelId: 7
+    levelStatusId: 3
+    levelSeconds: 120
+    gameResource: 4
+    grid:
+      X: 2
+      Y: 3
+      columns:
+      - rows: 000100
+      - rows: 010100
+  - levelId: 8
+    levelStatusId: 3
+    levelSeconds: 120
+    gameResource: 6
+    grid:
+      X: 3
+      Y: 4
+      columns:
+      - rows: 01000000
+      - rows: 00010001
+      - rows: 00000100
+  - levelId: 9
+    levelStatusId: 3
+    levelSeconds: 120
+    gameResource: 8
+    grid:
+      X: 3
+      Y: 4
+      columns:
+      - rows: 01000100
+      - rows: 00010001
+      - rows: 01000100
+  - levelId: 10
+    levelStatusId: 3
+    levelSeconds: 120
+    gameResource: 8
+    grid:
+      X: 3
+      Y: 4
+      columns:
+      - rows: 00010001
+      - rows: 01000100
+      - rows: 00010001
+  - levelId: 11
+    levelStatusId: 3
+    levelSeconds: 120
+    gameResource: 12
+    grid:
+      X: 4
+      Y: 5
+      columns:
+      - rows: 0100000001
+      - rows: 0001010100
+      - rows: 0001010100
+      - rows: 0100000001
+  - levelId: 12
+    levelStatusId: 3
+    levelSeconds: 120
+    gameResource: 11
+    grid:
+      X: 5
+      Y: 4
+      columns:
+      - rows: 00010100
+      - rows: 01000001
+      - rows: 01000001
+      - rows: 01000001
+      - rows: 00010100
+  - levelId: 13
+    levelStatusId: 3
+    levelSeconds: 120
+    gameResource: 16
+    grid:
+      X: 5
+      Y: 5
+      columns:
+      - rows: 0001000100
+      - rows: 0100010001
+      - rows: 0100010101
+      - rows: 0100010001
+      - rows: 0001000100
+  - levelId: 14
+    levelStatusId: 3
+    levelSeconds: 120
+    gameResource: 20
+    grid:
+      X: 5
+      Y: 5
+      columns:
+      - rows: 0100010001
+      - rows: 0001000101
+      - rows: 0101010101
+      - rows: 0001000101
+      - rows: 0100010001
+  - levelId: 15
+    levelStatusId: 3
+    levelSeconds: 120
+    gameResource: 7
+    grid:
+      X: 5
+      Y: 5
+      columns:
+      - rows: 0100000000
+      - rows: 0001000000
+      - rows: 0000010101
+      - rows: 0001000000
+      - rows: 0100000000
+  - levelId: 0
+    levelStatusId: 5
+    levelSeconds: 120
+    gameResource: 30
+    grid:
+      X: 5
+      Y: 5
+      columns:
+      - rows: 0100000000
+      - rows: 0000000000
+      - rows: 0000000000
+      - rows: 0000000000
+      - rows: 0000000000

@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Enchants
+  m_EditorClassIdentifier: 
+  m_GroupName: Enchants
+  m_GUID: dece679acfb777b4d9e4b93991c5b84a
+  m_SerializeEntries:
+  - m_GUID: cf4ae23f01e071f4483e4ed64631a174
+    m_Address: Assets/ResourcesAddresable/Enchants
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - enchant
+    - local
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 0aab13f02201f60499eb9e8379dae80c, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 4890b8a8194ddd84d96faf9865248e88, type: 2}
+    - {fileID: 11400000, guid: 2bc83acad22a115428032ba5787412ef, type: 2}

@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 388ddbedbf474373b7ec0194279043f0, type: 3}
+  m_Name: BuildingConfigs
+  m_EditorClassIdentifier: 
+  Buildings:
+  - TypeId: 4
+    ProducingItems: 010000000200000003000000
+    RecivingItems: 
+    ProducingSpeed: 0
+    MaxStorage: 100
+    CurStorage: 100
+    ViewPrefab: {fileID: 2236754695113212369, guid: 14e77072bc00e5a4b8d5cb4810995069, type: 3}
+  - TypeId: 2
+    ProducingItems: 
+    RecivingItems: 03000000
+    ProducingSpeed: 0
+    MaxStorage: 100000
+    CurStorage: 0
+    ViewPrefab: {fileID: 1893958228619694837, guid: 2d620d25f8b7d3842b0803f595363052, type: 3}
+  - TypeId: 3
+    ProducingItems: 
+    RecivingItems: 02000000
+    ProducingSpeed: 0
+    MaxStorage: 100000
+    CurStorage: 0
+    ViewPrefab: {fileID: 6161214108315230908, guid: 243962b66efda8543b37b764e4308fbd, type: 3}
+  - TypeId: 1
+    ProducingItems: 
+    RecivingItems: 01000000
+    ProducingSpeed: 0
+    MaxStorage: 50
+    CurStorage: 0
+    ViewPrefab: {fileID: 6042306699757264966, guid: 22ba31f407473e24a880b59175801b13, type: 3}
