@@ -97,26 +97,23 @@ platform :ios do
     sync_certificates
     list_profiles
 
-    # Unity has specific requirements around codesigning that we have to handle
-    # See https://github.com/fastlane/fastlane/discussions/17458 for context
-   
+    # Отключаем синхронную обработку символов Unity на CI
+    ENV['SYNCHRONOUS_SYMBOL_PROCESSING'] = 'FALSE'
+
+    # Создаём папку il2cppOutput, чтобы скрипт Unity не падал
+    sh "mkdir -p #{ENV['IOS_BUILD_PATH']}/iOS/Il2CppOutputProject/Source/il2cppOutput/"
+
+    # Делаем исполняемыми инструменты Unity, чтобы process_symbols работал
+    sh "chmod +x #{ENV['IOS_BUILD_PATH']}/iOS/usymtool"
+    sh "chmod +x #{ENV['IOS_BUILD_PATH']}/iOS/usymtoolarm64"
+
     # Automatic Signing for Unity-iPhone Target
     update_code_signing_settings(
       use_automatic_signing: true,
       path: "#{ENV['IOS_BUILD_PATH']}/iOS/Unity-iPhone.xcodeproj"
     )
 
-    # Manual Signing for OneSignalNotificationServiceExtension
-    #update_code_signing_settings(
-    #  use_automatic_signing: false,
-    #  team_id: ENV["sigh_#{ENV['IOS_BUNDLE_ID']}_appstore_team-id"],
-    #  code_sign_identity: "iPhone Distribution",
-    #  targets: "OneSignalNotificationServiceExtension",
-    #  path: "#{ENV['IOS_BUILD_PATH']}/iOS/Unity-iPhone.xcodeproj",
-    #  profile_name: ENV["sigh_#{ENV['IOS_BUNDLE_ID']}.OneSignalNotificationServiceExtension_appstore_profile-name"],
-    #  profile_uuid: ENV["sigh_#{ENV['IOS_BUNDLE_ID']}.OneSignalNotificationServiceExtension_appstore"]
-    #)
-
+    # Manual Signing for Unity-iPhone
     update_code_signing_settings(
       use_automatic_signing: false,
       team_id: ENV["sigh_#{ENV['IOS_BUNDLE_ID']}_appstore_team-id"],
@@ -128,30 +125,30 @@ platform :ios do
     )
 
     # Update version & build number
-     version_number = ENV['APP_VERSION'] || '1.0.0'
-     increment_version_number(version_number: version_number, xcodeproj: "#{ENV['IOS_BUILD_PATH']}/iOS/Unity-iPhone.xcodeproj")
-     increment_build_number({ build_number: latest_testflight_build_number(version: version_number, app_identifier: ENV['IOS_BUNDLE_ID']) + 1, xcodeproj: "#{ENV['IOS_BUILD_PATH']}/iOS/Unity-iPhone.xcodeproj"}) 
-    
-    # Install pods
-    #install_pods
+    version_number = ENV['APP_VERSION'] || '1.0.0'
+    increment_version_number(
+      version_number: version_number,
+      xcodeproj: "#{ENV['IOS_BUILD_PATH']}/iOS/Unity-iPhone.xcodeproj"
+    )
+    increment_build_number(
+      build_number: latest_testflight_build_number(
+        version: version_number,
+        app_identifier: ENV['IOS_BUNDLE_ID']
+      ) + 1,
+      xcodeproj: "#{ENV['IOS_BUILD_PATH']}/iOS/Unity-iPhone.xcodeproj"
+    )
 
-    build_app( #alias: gym
-      #workspace: "#{ENV['IOS_BUILD_PATH']}/iOS/Unity-iPhone.xcworkspace",
+    # Build app
+    build_app(
       project: "#{ENV['IOS_BUILD_PATH']}/iOS/Unity-iPhone.xcodeproj",
       scheme: 'Unity-iPhone',
       xcargs: '-allowProvisioningUpdates',
-      #destination: 'generic/platform=iOS' # Виправити формат
-      #destination: "platform=iOS Simulator, id=0FA23C4A-0E4A-4F03-9F6C-32122603E2DA, OS=16.2, name=iPhone 14"
+      derived_data_path: "#{ENV['IOS_BUILD_PATH']}/DerivedData",
       export_options: {
         method: 'app-store',
-        uploadBitcode: false, # Вимкнути біткод
-        compileBitcode: false, # Вимкнути компіляцію біткоду
-        #uploadSymbols: true,
-        #provisioningProfiles: {
-        #  'com.TestCI.TestCI': 'Match AppStore com.TestCI.TestCI'
-        #}
+        uploadBitcode: false,
+        compileBitcode: false
       }
     )
   end
-
 end
