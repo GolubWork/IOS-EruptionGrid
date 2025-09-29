@@ -6,7 +6,6 @@ using Code.Gameplay.Abilities.Configs;
 using Code.Gameplay.StaticData.AbilityStaticData;
 using Code.Infrastructure.EntityViews.Behaviours.GameBehaviours;
 using Code.Infrastructure.Identifiers;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Code.Gameplay.Armaments.Factory
@@ -51,7 +50,7 @@ namespace Code.Gameplay.Armaments.Factory
                         when: !abilityLevel.StatusSetups.IsNullOrEmpty())
                     .With(x => x.AddTargetLimit(setup.Pierce), when: setup.Pierce > 0)
                     .With(x => x.AddCollisionEffect(abilityLevel.CollisionEffectPrefab),
-                        when: !abilityLevel.CollisionEffectPrefab.IsUnityNull())
+                        when: false)
                     .AddRadius(setup.ContactRadius)
                     .AddTargetsBuffer(new List<int>(TargetBufferSize))
                     .AddProcessedTargets(new List<int>(TargetBufferSize))
