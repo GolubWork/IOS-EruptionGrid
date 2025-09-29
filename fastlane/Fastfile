@@ -148,7 +148,10 @@ platform :ios do
         method: 'app-store',
         uploadBitcode: false,
         compileBitcode: false
-      }
+      },
+      destination: "generic/platform=iOS"
     )
   end
+
+
 end
