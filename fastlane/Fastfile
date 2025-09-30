@@ -3,33 +3,41 @@ default_platform(:ios)
 platform :ios do
   desc "Build iOS app"
   lane :build do
-    if File.exist?("build/ios/Podfile")
-      cocoapods(podfile: "build/ios/Podfile", repo_update: false)
+    podfile_path = "#{Dir.pwd}/build/ios/Podfile"
+    workspace_path = "#{Dir.pwd}/build/ios/Unity-iPhone.xcworkspace"
+    if File.exist?(podfile_path)
+      cocoapods(podfile: podfile_path, repo_update: false)
     end
+    if File.exist?(workspace_path)
         build_app(
-          workspace: "build/ios/Unity-iPhone.xcworkspace", # Default Unity workspace
+          workspace: workspace_path, # Default Unity workspace
           scheme: "Unity-iPhone",               # Default Unity scheme
           export_method: "app-store"            # Or 'ad-hoc', 'development', etc.
     )
+    end
   end
   
     desc "Build and upload to App Store Connect"
     lane :release do
-        if File.exist?("build/ios/Podfile")
-          cocoapods(podfile: "build/ios/Podfile", repo_update: false)
+        podfile_path = "#{Dir.pwd}/build/ios/Podfile"
+        workspace_path = "#{Dir.pwd}/build/ios/Unity-iPhone.xcworkspace"
+        if File.exist?(podfile_path)
+          cocoapods(podfile: podfile_path, repo_update: false)
         end
-        build_app(
-          workspace: "build/ios/Unity-iPhone.xcworkspace",
-          scheme: "Unity-iPhone",
-          export_method: "app-store"
-        )
-        upload_to_app_store(
-          username: ENV['APPLE_CONNECT_EMAIL'],
-          app_identifier: ENV['IOS_BUNDLE_ID'],
-          team_id: ENV['APPLE_TEAM_ID'],
-          skip_metadata: true,
-          skip_screenshots: true,
-          force: true
-        )
+        if File.exist?(workspace_path)
+          build_app(
+            workspace: workspace_path,
+            scheme: "Unity-iPhone",
+            export_method: "app-store"
+          )
+          upload_to_app_store(
+            username: ENV['APPLE_CONNECT_EMAIL'],
+            app_identifier: ENV['IOS_BUNDLE_ID'],
+            team_id: ENV['APPLE_TEAM_ID'],
+            skip_metadata: true,
+            skip_screenshots: true,
+            force: true
+          )
+        end
     end
 end
