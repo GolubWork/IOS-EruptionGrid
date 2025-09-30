@@ -44,7 +44,6 @@ jobs:
 
       - name: Run Fastlane (release lane, upload to App Store Connect)
         run: bundle exec fastlane ios release
-        working-directory: ${{ env.XCODE_PROJECT_PATH }}
         env:
           APP_STORE_CONNECT_USERNAME: ${{ secrets.APPLE_CONNECT_EMAIL }}
           APP_IDENTIFIER: ${{ secrets.IOS_BUNDLE_ID }}
@@ -57,3 +56,6 @@ jobs:
           GH_PAT: ${{ secrets.GH_PAT }}
           IOS_APP_NAME: ${{ secrets.IOS_APP_NAME }}
           APP_VERSION: ${{ secrets.APP_VERSION }}
+          CI: true
+          FASTLANE_SKIP_UPDATE_CHECK: true
+          FASTLANE_DISABLE_COLORS: true
