@@ -2,6 +2,11 @@ name: iOS Fastlane Build Only
 
 on:
   workflow_dispatch:
+    inputs:
+      run_id:
+        description: 'Run ID of the Unity Build workflow to download artifact from'
+        required: true
+        type: string
 
 jobs:
   ios-build:
@@ -16,6 +21,8 @@ jobs:
         with:
           name: ios-xcode-project
           path: build/ios
+          run-id: ${{ inputs.run_id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set XCODE_PROJECT_PATH env
         run: echo "XCODE_PROJECT_PATH=build/ios" >> $GITHUB_ENV
