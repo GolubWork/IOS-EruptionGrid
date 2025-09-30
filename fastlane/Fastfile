@@ -1,51 +1,28 @@
-default_platform(:ios)
-
 platform :ios do
-  desc "Build iOS app"
-  lane :build do
-    podfile_path = File.join(ENV['XCODE_PROJECT_PATH'] || "#{Dir.pwd}/build/ios", "Podfile")
-  project_path = File.join(ENV['XCODE_PROJECT_PATH'] || "#{Dir.pwd}/build/ios", "Unity-iPhone.xcodeproj")
-    UI.message "Podfile path: #{podfile_path}"
-    UI.message "Project path: #{project_path}"
-    unless File.exist?(project_path)
-      UI.user_error!("Xcode project not found at #{project_path}. Make sure the Unity build artifact is downloaded and the path is correct.")
-    end
-    if File.exist?(podfile_path)
-      cocoapods(podfile: podfile_path, repo_update: false)
-    end
-    build_app(
-      project: project_path, # Unity Xcode project
-      scheme: "Unity-iPhone",   # Unity scheme
-      export_method: "app-store"
+  lane :beta do
+    setup_ci if ENV['CI']
+    match(
+      type: 'appstore',
+      git_url: ENV["MATCH_REPOSITORY"],
+      app_identifier: ENV["APP_IDENTIFIER"],
+      username: ENV["APP_STORE_CONNECT_USERNAME"],
+      team_id: ENV["APP_STORE_CONNECT_TEAM_ID"]
     )
-    UI.message "Build output path: #{lane_context[SharedValues::BUILD_APP_OUTPUT_PATH]}"
-  end
-
-  desc "Build and upload to App Store Connect"
-  lane :release do
-    podfile_path = File.join(ENV['XCODE_PROJECT_PATH'] || "#{Dir.pwd}/build/ios", "Podfile")
-  project_path = File.join(ENV['XCODE_PROJECT_PATH'] || "#{Dir.pwd}/build/ios", "Unity-iPhone.xcodeproj")
-    UI.message "Podfile path: #{podfile_path}"
-    UI.message "Project path: #{project_path}"
-    unless File.exist?(project_path)
-      UI.user_error!("Xcode project not found at #{project_path}. Make sure the Unity build artifact is downloaded and the path is correct.")
-    end
-    if File.exist?(podfile_path)
-      cocoapods(podfile: podfile_path, repo_update: false)
-    end
     build_app(
-      project: project_path,
+      project: "#{ENV['XCODE_PROJECT_PATH']}/Unity-iPhone.xcodeproj",
       scheme: "Unity-iPhone",
-      export_method: "app-store"
+      export_method: "app-store",
+      output_directory: "build/ios",
+      output_name: "#{ENV['IOS_APP_NAME']}.ipa"
     )
-    UI.message "Build output path: #{lane_context[SharedValues::BUILD_APP_OUTPUT_PATH]}"
-    upload_to_app_store(
-      username: ENV['APPLE_CONNECT_EMAIL'],
-      app_identifier: ENV['IOS_BUNDLE_ID'],
-      team_id: ENV['APPLE_TEAM_ID'],
-      skip_metadata: true,
-      skip_screenshots: true,
-      force: true
+    upload_to_testflight(
+      api_key: {
+        key_id: ENV["APPSTORE_KEY_ID"],
+        issuer_id: ENV["APPSTORE_ISSUER_ID"],
+        key: ENV["APPSTORE_P8"]
+      },
+      skip_waiting_for_build_processing: true,
+      app_version: ENV["APP_VERSION"]
     )
   end
 end
