@@ -25,7 +25,10 @@ jobs:
           github-token: ${{ secrets.GH_PAT }}
 
       - name: Log downloaded artifact path
-        run: 'echo "Downloaded artifact to: $GITHUB_WORKSPACE/build/ios"'
+        run: |
+          echo "Downloaded artifact to: $GITHUB_WORKSPACE/build/ios"
+          echo "Contents of build/ios:"
+          ls -la build/ios
 
       - name: Set XCODE_PROJECT_PATH env
         run: echo "XCODE_PROJECT_PATH=build/ios" >> $GITHUB_ENV

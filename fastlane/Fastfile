@@ -5,6 +5,8 @@ platform :ios do
   lane :build do
     podfile_path = "#{Dir.pwd}/ios/Podfile"
     workspace_path = "#{Dir.pwd}/ios/Unity-iPhone.xcworkspace"
+    UI.message "Podfile path: #{podfile_path}"
+    UI.message "Workspace path: #{workspace_path}"
     if File.exist?(podfile_path)
       cocoapods(podfile: podfile_path, repo_update: false)
     end
@@ -20,6 +22,8 @@ platform :ios do
     lane :release do
         podfile_path = "#{Dir.pwd}/ios/Podfile"
         workspace_path = "#{Dir.pwd}/ios/Unity-iPhone.xcworkspace"
+        UI.message "Podfile path: #{podfile_path}"
+        UI.message "Workspace path: #{workspace_path}"
         if File.exist?(podfile_path)
           cocoapods(podfile: podfile_path, repo_update: false)
         end
