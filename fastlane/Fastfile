@@ -3,43 +3,49 @@ default_platform(:ios)
 platform :ios do
   desc "Build iOS app"
   lane :build do
-    podfile_path = "#{Dir.pwd}/build/ios/Podfile"
-    workspace_path = "#{Dir.pwd}/build/ios/Unity-iPhone.xcworkspace"
+    podfile_path = File.join(ENV['XCODE_PROJECT_PATH'] || "#{Dir.pwd}/build/ios", "Podfile")
+    workspace_path = File.join(ENV['XCODE_PROJECT_PATH'] || "#{Dir.pwd}/build/ios", "Unity-iPhone.xcworkspace")
     UI.message "Podfile path: #{podfile_path}"
     UI.message "Workspace path: #{workspace_path}"
+    unless File.exist?(workspace_path)
+      UI.user_error!("Xcode workspace not found at #{workspace_path}. Make sure the Unity build artifact is downloaded and the path is correct.")
+    end
     if File.exist?(podfile_path)
       cocoapods(podfile: podfile_path, repo_update: false)
     end
-        build_app(
-          workspace: workspace_path, # Default Unity workspace
-          scheme: "Unity-iPhone",               # Default Unity scheme
-          export_method: "app-store"            # Or 'ad-hoc', 'development', etc.
+    build_app(
+      workspace: workspace_path, # Unity workspace
+      scheme: "Unity-iPhone",   # Unity scheme
+      export_method: "app-store"
     )
     UI.message "Build output path: #{lane_context[SharedValues::BUILD_APP_OUTPUT_PATH]}"
   end
-  
-    desc "Build and upload to App Store Connect"
-    lane :release do
-        podfile_path = "#{Dir.pwd}/build/ios/Podfile"
-        workspace_path = "#{Dir.pwd}/build/ios/Unity-iPhone.xcworkspace"
-        UI.message "Podfile path: #{podfile_path}"
-        UI.message "Workspace path: #{workspace_path}"
-        if File.exist?(podfile_path)
-          cocoapods(podfile: podfile_path, repo_update: false)
-        end
-          build_app(
-            workspace: workspace_path,
-            scheme: "Unity-iPhone",
-            export_method: "app-store"
-          )
-          UI.message "Build output path: #{lane_context[SharedValues::BUILD_APP_OUTPUT_PATH]}"
-          upload_to_app_store(
-            username: ENV['APPLE_CONNECT_EMAIL'],
-            app_identifier: ENV['IOS_BUNDLE_ID'],
-            team_id: ENV['APPLE_TEAM_ID'],
-            skip_metadata: true,
-            skip_screenshots: true,
-            force: true
-          )
+
+  desc "Build and upload to App Store Connect"
+  lane :release do
+    podfile_path = File.join(ENV['XCODE_PROJECT_PATH'] || "#{Dir.pwd}/build/ios", "Podfile")
+    workspace_path = File.join(ENV['XCODE_PROJECT_PATH'] || "#{Dir.pwd}/build/ios", "Unity-iPhone.xcworkspace")
+    UI.message "Podfile path: #{podfile_path}"
+    UI.message "Workspace path: #{workspace_path}"
+    unless File.exist?(workspace_path)
+      UI.user_error!("Xcode workspace not found at #{workspace_path}. Make sure the Unity build artifact is downloaded and the path is correct.")
     end
+    if File.exist?(podfile_path)
+      cocoapods(podfile: podfile_path, repo_update: false)
+    end
+    build_app(
+      workspace: workspace_path,
+      scheme: "Unity-iPhone",
+      export_method: "app-store"
+    )
+    UI.message "Build output path: #{lane_context[SharedValues::BUILD_APP_OUTPUT_PATH]}"
+    upload_to_app_store(
+      username: ENV['APPLE_CONNECT_EMAIL'],
+      app_identifier: ENV['IOS_BUNDLE_ID'],
+      team_id: ENV['APPLE_TEAM_ID'],
+      skip_metadata: true,
+      skip_screenshots: true,
+      force: true
+    )
+  end
 end
