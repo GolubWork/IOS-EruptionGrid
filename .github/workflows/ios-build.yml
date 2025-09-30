@@ -1,0 +1,75 @@
+
+name: Build Unity iOS with Fastlane
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+
+jobs:
+  unity-build:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Unity
+        uses: game-ci/unity-builder@v4
+        with:
+          targetPlatform: iOS
+
+      - name: Build Unity project for iOS
+        run: |
+          mkdir -p build/ios
+          unity-editor -batchmode -nographics -quit -projectPath . -executeMethod BuildScript.BuildIOS -buildTarget iOS -logFile build/ios/unity_build.log
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+
+      - name: Upload Xcode project artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ios-xcode-project
+          path: build/ios
+
+  ios-build:
+    runs-on: macos-latest
+    needs: unity-build
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Download Xcode project artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: ios-xcode-project
+          path: build/ios
+
+      - name: Set up Ruby and Bundler
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2'
+          bundler-cache: true
+
+      - name: Install Ruby gems
+        run: bundle install
+
+      - name: Install CocoaPods
+        run: bundle exec pod install --project-directory=build/ios
+
+      - name: Run Fastlane (release lane, upload to App Store Connect)
+        run: bundle exec fastlane ios release
+        working-directory: build/ios
+        env:
+          APP_STORE_CONNECT_USERNAME: ${{ secrets.APPLE_CONNECT_EMAIL }}
+          APP_IDENTIFIER: ${{ secrets.IOS_BUNDLE_ID }}
+          APP_STORE_CONNECT_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+          APPSTORE_ISSUER_ID: ${{ secrets.APPSTORE_ISSUER_ID }}
+          APPSTORE_KEY_ID: ${{ secrets.APPSTORE_KEY_ID }}
+          APPSTORE_P8: ${{ secrets.APPSTORE_P8 }}
+          MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
+          MATCH_REPOSITORY: ${{ secrets.MATCH_REPOSITORY }}
+          GH_PAT: ${{ secrets.GH_PAT }}
+          IOS_APP_NAME: ${{ secrets.IOS_APP_NAME }}
+          APP_VERSION: ${{ secrets.APP_VERSION }}
