@@ -42,6 +42,7 @@ platform :ios do
       type: "appstore",
       storage_mode: "git",
       git_url: "git@github.com:#{match_org}/#{match_repo}.git",
+      git_basic_authorization: Base64.encode64("#{ENV['GH_PAT']}:x-oauth-basic").strip,  # Add PAT authentication
       app_identifier: [main_app_bundle_id],
       readonly: false
     )
