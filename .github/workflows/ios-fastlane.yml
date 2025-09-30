@@ -43,7 +43,7 @@ jobs:
         run: bundle install
 
       - name: Run Fastlane (release lane, upload to App Store Connect)
-        run: bundle exec fastlane ios release
+        run: bundle exec fastlane ios beta
         env:
           APP_STORE_CONNECT_USERNAME: ${{ secrets.APPLE_CONNECT_EMAIL }}
           APP_IDENTIFIER: ${{ secrets.IOS_BUNDLE_ID }}
