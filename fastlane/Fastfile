@@ -4,7 +4,7 @@ platform :ios do
   desc "Build iOS app"
   lane :build do
     podfile_path = File.join(ENV['XCODE_PROJECT_PATH'] || "#{Dir.pwd}/build/ios", "Podfile")
-    project_path = File.join(ENV['XCODE_PROJECT_PATH'] || "#{Dir.pwd}/build/ios", "iOS/Unity-iPhone.xcodeproj")
+  project_path = File.join(ENV['XCODE_PROJECT_PATH'] || "#{Dir.pwd}/build/ios", "Unity-iPhone.xcodeproj")
     UI.message "Podfile path: #{podfile_path}"
     UI.message "Project path: #{project_path}"
     unless File.exist?(project_path)
@@ -24,7 +24,7 @@ platform :ios do
   desc "Build and upload to App Store Connect"
   lane :release do
     podfile_path = File.join(ENV['XCODE_PROJECT_PATH'] || "#{Dir.pwd}/build/ios", "Podfile")
-    project_path = File.join(ENV['XCODE_PROJECT_PATH'] || "#{Dir.pwd}/build/ios", "iOS/Unity-iPhone.xcodeproj")
+  project_path = File.join(ENV['XCODE_PROJECT_PATH'] || "#{Dir.pwd}/build/ios", "Unity-iPhone.xcodeproj")
     UI.message "Podfile path: #{podfile_path}"
     UI.message "Project path: #{project_path}"
     unless File.exist?(project_path)
