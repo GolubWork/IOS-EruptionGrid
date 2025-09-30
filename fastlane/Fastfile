@@ -3,7 +3,9 @@ default_platform(:ios)
 platform :ios do
   desc "Build iOS app"
   lane :build do
-    cocoapods(podfile: "build/ios/Podfile", repo_update: false)
+    if File.exist?("build/ios/Podfile")
+      cocoapods(podfile: "build/ios/Podfile", repo_update: false)
+    end
         build_app(
           workspace: "build/ios/Unity-iPhone.xcworkspace", # Default Unity workspace
           scheme: "Unity-iPhone",               # Default Unity scheme
@@ -13,7 +15,9 @@ platform :ios do
   
     desc "Build and upload to App Store Connect"
     lane :release do
-        cocoapods(podfile: "build/ios/Podfile", repo_update: false)
+        if File.exist?("build/ios/Podfile")
+          cocoapods(podfile: "build/ios/Podfile", repo_update: false)
+        end
         build_app(
           workspace: "build/ios/Unity-iPhone.xcworkspace",
           scheme: "Unity-iPhone",
