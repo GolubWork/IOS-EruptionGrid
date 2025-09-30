@@ -22,7 +22,7 @@ jobs:
           name: ios-xcode-project
           path: build/ios
           run-id: ${{ inputs.run_id }}
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.GH_PAT }}
 
       - name: Set XCODE_PROJECT_PATH env
         run: echo "XCODE_PROJECT_PATH=build/ios" >> $GITHUB_ENV
