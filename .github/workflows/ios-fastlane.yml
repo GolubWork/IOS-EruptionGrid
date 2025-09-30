@@ -36,12 +36,6 @@ jobs:
       - name: Install Ruby gems
         run: bundle install
 
-      - name: Install CocoaPods
-        run: |
-          if [ -f "$XCODE_PROJECT_PATH/Podfile" ]; then
-            bundle exec pod install --project-directory="$XCODE_PROJECT_PATH"
-          fi
-
       - name: Run Fastlane (release lane, upload to App Store Connect)
         run: bundle exec fastlane ios release
         env:
