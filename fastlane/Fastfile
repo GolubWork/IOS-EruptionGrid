@@ -4,17 +4,17 @@ platform :ios do
   desc "Build iOS app"
   lane :build do
     podfile_path = File.join(ENV['XCODE_PROJECT_PATH'] || "#{Dir.pwd}/build/ios", "Podfile")
-    workspace_path = File.join(ENV['XCODE_PROJECT_PATH'] || "#{Dir.pwd}/build/ios", "Unity-iPhone.xcworkspace")
+    project_path = File.join(ENV['XCODE_PROJECT_PATH'] || "#{Dir.pwd}/build/ios", "iOS/Unity-iPhone.xcodeproj")
     UI.message "Podfile path: #{podfile_path}"
-    UI.message "Workspace path: #{workspace_path}"
-    unless File.exist?(workspace_path)
-      UI.user_error!("Xcode workspace not found at #{workspace_path}. Make sure the Unity build artifact is downloaded and the path is correct.")
+    UI.message "Project path: #{project_path}"
+    unless File.exist?(project_path)
+      UI.user_error!("Xcode project not found at #{project_path}. Make sure the Unity build artifact is downloaded and the path is correct.")
     end
     if File.exist?(podfile_path)
       cocoapods(podfile: podfile_path, repo_update: false)
     end
     build_app(
-      workspace: workspace_path, # Unity workspace
+      project: project_path, # Unity Xcode project
       scheme: "Unity-iPhone",   # Unity scheme
       export_method: "app-store"
     )
@@ -24,17 +24,17 @@ platform :ios do
   desc "Build and upload to App Store Connect"
   lane :release do
     podfile_path = File.join(ENV['XCODE_PROJECT_PATH'] || "#{Dir.pwd}/build/ios", "Podfile")
-    workspace_path = File.join(ENV['XCODE_PROJECT_PATH'] || "#{Dir.pwd}/build/ios", "Unity-iPhone.xcworkspace")
+    project_path = File.join(ENV['XCODE_PROJECT_PATH'] || "#{Dir.pwd}/build/ios", "iOS/Unity-iPhone.xcodeproj")
     UI.message "Podfile path: #{podfile_path}"
-    UI.message "Workspace path: #{workspace_path}"
-    unless File.exist?(workspace_path)
-      UI.user_error!("Xcode workspace not found at #{workspace_path}. Make sure the Unity build artifact is downloaded and the path is correct.")
+    UI.message "Project path: #{project_path}"
+    unless File.exist?(project_path)
+      UI.user_error!("Xcode project not found at #{project_path}. Make sure the Unity build artifact is downloaded and the path is correct.")
     end
     if File.exist?(podfile_path)
       cocoapods(podfile: podfile_path, repo_update: false)
     end
     build_app(
-      workspace: workspace_path,
+      project: project_path,
       scheme: "Unity-iPhone",
       export_method: "app-store"
     )
