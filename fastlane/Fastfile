@@ -4,6 +4,7 @@ platform :ios do
     match(
       type: 'appstore',
       git_url: ENV["MATCH_REPOSITORY"],
+      git_basic_authorization: ENV["GH_PAT"],
       app_identifier: ENV["APP_IDENTIFIER"],
       username: ENV["APP_STORE_CONNECT_USERNAME"],
       team_id: ENV["APP_STORE_CONNECT_TEAM_ID"]
