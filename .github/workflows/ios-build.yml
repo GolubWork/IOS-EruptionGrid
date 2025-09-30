@@ -29,15 +29,6 @@ jobs:
         with:
           targetPlatform: iOS
 
-      - name: Build Unity project for iOS
-        run: |
-          mkdir -p build/ios
-          unity-editor -batchmode -nographics -quit -projectPath . -executeMethod BuildScript.BuildIOS -buildTarget iOS -logFile build/ios/unity_build.log
-        env:
-          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
-          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
-
       - name: Upload Xcode project artifact
         uses: actions/upload-artifact@v4
         with:
