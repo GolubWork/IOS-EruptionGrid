@@ -1,9 +1,9 @@
 using System.Linq;
 using Code.Audios.Audio.Configs;
 using Code.Audios.Audio.Factory;
+using Code.Infrastructure.DependencyInjection;
 using Code.Progress.Provider;
 using Code.Progress.SaveLoad;
-using Zenject;
 
 namespace Code.Meta.UI.HUD.SettingsWindow.Services
 {

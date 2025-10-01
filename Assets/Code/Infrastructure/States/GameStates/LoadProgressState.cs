@@ -45,6 +45,7 @@ namespace Code.Infrastructure.States.GameStates
     
     public override async void Enter()
     {
+      CustomDebug.Log("Enter LoadProgressState");
       await InitializeProgress();
       _stateMachine.Enter<ActualizeProgressState>();
     }

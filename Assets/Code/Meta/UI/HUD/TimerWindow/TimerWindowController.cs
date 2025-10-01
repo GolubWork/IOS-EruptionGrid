@@ -1,9 +1,9 @@
 ﻿using Code.Common.Helpers;
+using Code.Infrastructure.DependencyInjection;
 using Code.Meta.UI.HUD.TimerWindow.Servises;
 using Code.Windows.UpdatableWindows;
 using TMPro;
 using UnityEngine;
-using Zenject;
 
 namespace Code.Meta.UI.HUD.TimerWindow
 {

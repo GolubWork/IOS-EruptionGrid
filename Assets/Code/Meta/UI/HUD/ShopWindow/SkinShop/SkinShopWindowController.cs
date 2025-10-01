@@ -1,12 +1,12 @@
 ﻿using Code.Audios.Audio.Factory;
 using Code.Gameplay.StaticData.SkinStaticData;
+using Code.Infrastructure.DependencyInjection;
 using Code.Meta.Shop.Factories;
 using Code.Meta.UI.HUD.ShopWindow.Providers;
 using Code.Windows.StaticWindows;
 using Code.Windows.UpdatableWindows;
 using UnityEngine;
 using UnityEngine.UI;
-using Zenject;
 
 namespace Code.Meta.UI.HUD.ShopWindow.SkinShop
 {

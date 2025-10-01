@@ -1,3 +1,4 @@
+using Code.Common.Helpers;
 using Code.Infrastructure.Loading;
 using Code.Infrastructure.States.StateInfrastructure;
 using Code.Infrastructure.States.StateMachine;
@@ -18,6 +19,7 @@ namespace Code.Infrastructure.States.GameStates
     
     public override void Enter(string sceneName)
     {
+      CustomDebug.Log("Enter LoadingBattleState");
       _sceneLoader.LoadSceneAddressable(sceneName, EnterBattleLoopState);
     }
 

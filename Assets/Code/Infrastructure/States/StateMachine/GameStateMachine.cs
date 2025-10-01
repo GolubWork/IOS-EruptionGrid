@@ -1,8 +1,9 @@
 ﻿using System;
+using Code.Infrastructure.DependencyInjection;
 using Code.Infrastructure.States.Factory;
 using Code.Infrastructure.States.StateInfrastructure;
-using Zenject;
 using Cysharp.Threading.Tasks;
+using UnityEngine;
 
 namespace Code.Infrastructure.States.StateMachine
 {
@@ -12,10 +13,7 @@ namespace Code.Infrastructure.States.StateMachine
     private readonly IStateFactory _stateFactory;
     private Type _activeStateType;
 
-    public GameStateMachine(IStateFactory stateFactory)
-    {
-      _stateFactory = stateFactory;
-    }
+    public GameStateMachine(IStateFactory stateFactory) => _stateFactory = stateFactory;
 
     public void Tick()
     {
@@ -23,11 +21,17 @@ namespace Code.Infrastructure.States.StateMachine
         updateableState.Update();
     }
 
-    public void Enter<TState>() where TState : class, IState =>
+    public void Enter<TState>() where TState : class, IState
+    {
+      Debug.Log($"[GSM] Enter<{typeof(TState).Name}>");
       RequestEnter<TState>().Forget();
+    }
 
-    public void Enter<TState, TPayload>(TPayload payload) where TState : class, IPayloadState<TPayload> =>
+    public void Enter<TState, TPayload>(TPayload payload) where TState : class, IPayloadState<TPayload>
+    {
+      Debug.Log($"[GSM] Enter<{typeof(TState).Name}, {typeof(TPayload).Name}> payload={payload}");
       RequestEnter<TState, TPayload>(payload).Forget();
+    }
 
     public bool CompareState<TState>() where TState : class, IState =>
       _activeStateType == typeof(TState);
@@ -49,6 +53,7 @@ namespace Code.Infrastructure.States.StateMachine
     {
       _activeState = state;
       _activeStateType = typeof(TState);
+      Debug.Log($"[GSM] -> calling {typeof(TState).Name}.Enter()");
       state.Enter();
       return state;
     }
@@ -58,6 +63,7 @@ namespace Code.Infrastructure.States.StateMachine
     {
       _activeState = state;
       _activeStateType = typeof(TState);
+      Debug.Log($"[GSM] -> calling {typeof(TState).Name}.Enter(payload)");
       state.Enter(payload);
       return state;
     }
@@ -66,8 +72,18 @@ namespace Code.Infrastructure.States.StateMachine
     {
       if (_activeState != null)
       {
-        await _activeState.BeginExit();
-        _activeState.EndExit();
+        try
+        {
+          Debug.Log($"[GSM] BeginExit {_activeState.GetType().Name}...");
+          // страхуемся от вечного ожидания
+          await _activeState.BeginExit().Timeout(TimeSpan.FromSeconds(5));
+          Debug.Log($"[GSM] EndExit {_activeState.GetType().Name}");
+          _activeState.EndExit();
+        }
+        catch (Exception e)
+        {
+          Debug.LogException(e);
+        }
       }
 
       return ChangeState<TState>();
@@ -75,7 +91,9 @@ namespace Code.Infrastructure.States.StateMachine
 
     private TState ChangeState<TState>() where TState : class, IExitableState
     {
+      Debug.Log($"[GSM] Resolve state {typeof(TState).Name}...");
       TState state = _stateFactory.GetState<TState>();
+      Debug.Log($"[GSM] Resolved instance: {state?.GetType().Name ?? "NULL"}");
       return state;
     }
   }

@@ -1,8 +1,8 @@
 using Code.Common.Entity;
+using Code.Infrastructure.DependencyInjection;
 using Code.Infrastructure.EntityViews.Behaviours.GameBehaviours;
 using Code.Infrastructure.Identifiers;
 using UnityEngine;
-using Zenject;
 
 namespace Code.Infrastructure.EntityViews
 {

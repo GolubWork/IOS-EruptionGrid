@@ -1,4 +1,5 @@
 ﻿using System;
+using Code.Common.Helpers;
 using Code.Gameplay.StaticData.WindowsStaticData;
 using Code.Infrastructure.AssetManagement.Constants;
 using Code.Infrastructure.Loading;
@@ -29,10 +30,13 @@ namespace Code.Infrastructure.States.GameStates
     
     public override async void Enter()
     {
+      CustomDebug.Log("Enter BootstrapState");
       try
       {
+        CustomDebug.Log("LoadAll");
         await _staticWindowService.LoadAll();
         _sceneLoader.LoadSceneBuildIn(ScenesDirectoryConstants.LoadingScenePath, EnterLoadingState);
+        CustomDebug.Log("LoadSceneBuildIn");
       }
       catch (Exception e)
       {
@@ -41,6 +45,7 @@ namespace Code.Infrastructure.States.GameStates
     }
     private void EnterLoadingState()
     {
+      CustomDebug.Log("EnterLoadingState");
       _loadingController.Show();
       _stateMachine.Enter<LoadResourcesState>();
     }

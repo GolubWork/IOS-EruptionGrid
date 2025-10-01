@@ -1,8 +1,8 @@
+using Code.Infrastructure.DependencyInjection;
 using Code.Meta.UI.HUD.HPContainer.Services;
 using Code.Windows.StaticWindows;
 using UnityEngine;
 using UnityEngine.UI;
-using Zenject;
 
 namespace Code.Meta.UI.HUD.HPContainer
 {

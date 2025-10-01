@@ -1,6 +1,6 @@
 using Code.Gameplay.Levels;
+using Code.Infrastructure.DependencyInjection;
 using UnityEngine;
-using Zenject;
 
 namespace Code.Infrastructure.Installers
 {
@@ -16,12 +16,6 @@ namespace Code.Infrastructure.Installers
         {
             _levelDataProvider = levelDataProvider;
         }
-
-        private void Awake()
-        {
-            Initialize();
-        }
-
         public void Initialize()
         {
             _levelDataProvider.SetStartPoint(startPoint.position);

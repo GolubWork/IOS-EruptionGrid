@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using Code.Gameplay.EffectsVisual.Configs;
 using Code.Infrastructure.AssetManagement;
 using Code.Infrastructure.AssetManagement.Constants;
+using Code.Infrastructure.DependencyInjection;
 using Cysharp.Threading.Tasks;
-using Zenject;
 
 namespace Code.Gameplay.StaticData.VisualEffectStaticData
 {

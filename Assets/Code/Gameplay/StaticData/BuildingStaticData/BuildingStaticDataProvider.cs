@@ -2,8 +2,8 @@
 using Code.Gameplay.Buildings.Configs;
 using Code.Infrastructure.AssetManagement;
 using Code.Infrastructure.AssetManagement.Constants;
+using Code.Infrastructure.DependencyInjection;
 using Cysharp.Threading.Tasks;
-using Zenject;
 
 namespace Code.Gameplay.StaticData.BuildingStaticData
 {

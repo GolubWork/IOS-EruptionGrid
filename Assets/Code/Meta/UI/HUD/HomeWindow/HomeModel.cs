@@ -1,5 +1,6 @@
 using Code.Audios.Audio;
 using Code.Audios.Audio.Factory;
+using Code.Common.Helpers;
 using Code.Infrastructure.States.GameStates;
 using Code.Infrastructure.States.StateMachine;
 using Code.Windows.StaticWindows;
@@ -26,9 +27,11 @@ namespace Code.Meta.UI.HUD.HomeWindow
 
         public void EnterBattleLoadingState()
         {
+            CustomDebug.Log("Enter BattleLoadingState");
             _audioFactory.CreateSound(SoundTypeId.BtnClick);
-            _staticWindowService.CloseAll();
             _stateMachine.Enter<LoadingBattleState, string>(MetaConstants.BattleSceneName);
+            _staticWindowService.CloseAll();
+          
         }
 
         public void Settings()

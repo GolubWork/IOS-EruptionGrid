@@ -4,8 +4,8 @@ using Code.Gameplay.CharacterStats.Indexing;
 using Code.Gameplay.Effects;
 using Code.Gameplay.Statuses;
 using Code.Gameplay.Statuses.Indexing;
+using Code.Infrastructure.DependencyInjection;
 using Entitas;
-using Zenject;
 
 namespace Code.Common.EntityIndices
 {

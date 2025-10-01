@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Code.Audios.Audio;
 using Code.Audios.Audio.Factory;
+using Code.Infrastructure.DependencyInjection;
 using Code.Infrastructure.States.GameStates;
 using Code.Infrastructure.States.StateMachine;
 using Code.Meta;
@@ -10,7 +11,6 @@ using Code.Meta.UI.HUD.LevelsWindow;
 using Code.Windows.StaticWindows;
 using UnityEngine;
 using UnityEngine.UI;
-using Zenject;
 
 public class LevelSelectionWindowController : StaticWindow
 {

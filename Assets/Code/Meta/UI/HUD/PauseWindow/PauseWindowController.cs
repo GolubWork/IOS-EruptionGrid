@@ -1,11 +1,11 @@
 using Code.Audios.Audio.Factory;
 using Code.Gameplay.GameLoop;
+using Code.Infrastructure.DependencyInjection;
 using Code.Infrastructure.States.StateMachine;
 using Code.Windows.StaticWindows;
 using Code.Windows.UpdatableWindows;
 using UnityEngine;
 using UnityEngine.UI;
-using Zenject;
 
 namespace Code.Meta.UI.HUD.PauseWindow
 {

@@ -1,5 +1,6 @@
 using System;
 using Code.Audios.Audio.Services;
+using Code.Common.Helpers;
 using Code.Gameplay.StaticData.AbilityStaticData;
 using Code.Gameplay.StaticData.AdditionalSpriteProvider;
 using Code.Gameplay.StaticData.BuildingStaticData;
@@ -76,6 +77,8 @@ namespace Code.Infrastructure.States.GameStates
 
         public override async void Enter()
         {
+            CustomDebug.Log("Enter LoadResourcesState");
+            
             await LoadResources();
             
             _stateMachine.Enter<LoadProgressState>();

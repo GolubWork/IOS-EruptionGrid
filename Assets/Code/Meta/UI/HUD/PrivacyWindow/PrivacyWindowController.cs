@@ -1,9 +1,9 @@
 using Code.Audios.Audio.Factory;
+using Code.Infrastructure.DependencyInjection;
 using Code.Windows.StaticWindows;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using Zenject;
 
 namespace Code.Meta.UI.HUD.PrivacyWindow
 {

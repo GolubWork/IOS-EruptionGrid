@@ -1,7 +1,7 @@
 using Code.Gameplay.Cameras;
+using Code.Infrastructure.DependencyInjection;
 using Code.Infrastructure.EntityViews.Behaviours.GameBehaviours;
 using UnityEngine;
-using Zenject;
 
 namespace Code.Infrastructure.EntityViews.Registrars.GameRgistrars
 {

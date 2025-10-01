@@ -1,5 +1,5 @@
+using Code.Infrastructure.DependencyInjection;
 using Code.Infrastructure.States.StateInfrastructure;
-using Zenject;
 
 namespace Code.Infrastructure.States.Factory
 {

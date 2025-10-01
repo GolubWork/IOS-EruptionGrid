@@ -1,4 +1,5 @@
-﻿using Code.Gameplay.Common.Time;
+﻿using Code.Common.Helpers;
+using Code.Gameplay.Common.Time;
 using Code.Infrastructure.States.StateInfrastructure;
 using Code.Infrastructure.States.StateMachine;
 using Code.Infrastructure.Systems;
@@ -33,6 +34,7 @@ namespace Code.Infrastructure.States.GameStates
     
     public override void Enter()
     {
+      CustomDebug.Log("Enter ActualizeProgressState");
       _actualizationFeature = _systemFactory.Create<ActualizationFeature>();
       
       ActualizeProgress(_progressProvider.ProgressData);

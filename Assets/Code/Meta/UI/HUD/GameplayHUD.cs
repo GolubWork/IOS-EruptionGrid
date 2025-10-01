@@ -1,10 +1,10 @@
 using Code.Audios.Audio;
 using Code.Audios.Audio.Factory;
+using Code.Infrastructure.DependencyInjection;
 using Code.Progress.SaveLoad;
 using Code.Windows.StaticWindows;
 using Code.Windows.UpdatableWindows;
 using UnityEngine;
-using Zenject;
 
 namespace Code.Meta.UI.HUD
 {

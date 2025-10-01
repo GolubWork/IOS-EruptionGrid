@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using Code.Infrastructure.AssetManagement;
 using Code.Infrastructure.AssetManagement.Constants;
+using Code.Infrastructure.DependencyInjection;
 using Code.Windows.StaticWindows;
 using Code.Windows.StaticWindows.Configs;
 using Code.Windows.UpdatableWindows;
 using Code.Windows.UpdatableWindows.Configs;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
-using Zenject;
 
 namespace Code.Gameplay.StaticData.WindowsStaticData
 {

@@ -1,5 +1,6 @@
 using Code.Audios.Audio;
 using Code.Audios.Audio.Factory;
+using Code.Common.Helpers;
 using Code.Gameplay;
 using Code.Gameplay.Backgrounds.Factory;
 using Code.Gameplay.Cameras;
@@ -60,6 +61,7 @@ namespace Code.Infrastructure.States.GameStates
     
     public override void Enter()
     {
+      CustomDebug.Log("Enter BattleEnterState");
       var inputs = _input.GetGroup(InputMatcher.Input).GetSingleEntity();
       inputs.isInputAvaliable = true;
       

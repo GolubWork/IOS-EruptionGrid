@@ -1,35 +1,23 @@
 using Code.Gameplay.StaticData.WindowsStaticData;
+using Code.Infrastructure.DependencyInjection;
 using Code.Windows.StaticWindows;
 using Code.Windows.UpdatableWindows;
 using UnityEngine;
-using Zenject;
 
 namespace Code.Infrastructure.Installers
 {
-  public class UIInitializer : MonoBehaviour, IInitializable
+  public class UIInitializer : MonoBehaviour
   {
-    private IStaticWindowFactory _staticWindowFactory;
-    
-    public RectTransform UIRoot;
-    private IUpdatableWindowFactory _updatableWindowFactory;
-    private IWindowsStaticDataService _staticWindowService;
+    [SerializeField] private RectTransform uiRoot;
 
-    [Inject]
-    private void Construct(
-      IStaticWindowFactory staticWindowFactory, 
-      IUpdatableWindowFactory updatableWindowFactory, 
-      IWindowsStaticDataService staticWindowService)
+    [Inject] IStaticWindowFactory _staticFactory;
+    [Inject] IUpdatableWindowFactory _updatableFactory;
+
+    private void Awake()
     {
-      _staticWindowFactory = staticWindowFactory;
-      _updatableWindowFactory = updatableWindowFactory;
-      _staticWindowService = staticWindowService;
+      ServiceProvider.Inject(this);
+      _staticFactory.SetUiRoot(uiRoot.gameObject);
+      _updatableFactory.SetUiRoot(uiRoot.gameObject);
     }
-    
-    public void Initialize()
-    {
-      _staticWindowFactory.SetUIRoot(UIRoot);
-      _updatableWindowFactory.SetUiRoot(_staticWindowService.GetCanvasPrefab());
-    }
-     
   }
 }

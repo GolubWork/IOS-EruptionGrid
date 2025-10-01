@@ -4,7 +4,7 @@ namespace Code.Windows.StaticWindows
 {
   public interface IStaticWindowFactory
   {
-    public void SetUIRoot(RectTransform uiRoot);
-    public StaticWindow CreateWindow(StaticWindowId staticWindowId);
+    public void SetUiRoot(GameObject uiRoot);
+    StaticWindow CreateWindow(StaticWindowId id);
   }
 }

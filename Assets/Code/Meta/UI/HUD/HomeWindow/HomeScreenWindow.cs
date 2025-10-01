@@ -1,12 +1,13 @@
 using System.Linq;
 using Code.Audios.Audio.Factory;
 using Code.Common.Helpers;
+using Code.Infrastructure.DependencyInjection;
 using Code.Infrastructure.States.StateMachine;
 using Code.Meta.Levels.Configs;
 using Code.Windows.StaticWindows;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
-using Zenject;
 
 namespace Code.Meta.UI.HUD.HomeWindow
 {
@@ -27,6 +28,8 @@ namespace Code.Meta.UI.HUD.HomeWindow
         private IStaticWindowService _staticWindowService;
         private LevelData _currentLevelData;
         private MetaContext _metaContext;
+        
+        private UnityAction _onStartGame, _onLevels, _onSettings, _onPrivacy, _onLeaderboard, _onShop, _onAch;
 
         [Inject]
         private void Construct(MetaContext metaContext,         
@@ -46,30 +49,36 @@ namespace Code.Meta.UI.HUD.HomeWindow
             _homeModel = new HomeModel(_stateMachine, _audioFactory, _staticWindowService);
             SetCurrentLevelData();
             LockScreen();
+            
+            _onStartGame   = OnBtnStartGame;
+            _onLevels      = OnBtnLevels;
+            _onSettings    = OnBtnSettings;
+            _onPrivacy     = OnBtnPrivacy;
+            _onLeaderboard = OnBtnLeaderboard;
+            _onShop        = _homeModel.Shop;
+            _onAch         = _homeModel.Achivments;
         }
         
         protected override void SubscribeUpdates()
         {
-            btnStartGame.onClick.AddListener(OnBtnStartGame);
-            btnLevels.onClick.AddListener(OnBtnLevels);
-            btnSettings.onClick.AddListener(OnBtnSettings);
-            btnPrivacy.onClick.AddListener(OnBtnPrivacy);
-            btnLeaderboard.onClick.AddListener(OnBtnLeaderboard);
-            btnShop.onClick.AddListener(_homeModel.Shop);
-            btnAchivments.onClick.AddListener(_homeModel.Achivments);
+            if (btnStartGame)   btnStartGame.onClick.AddListener(_onStartGame);
+            if (btnLevels)      btnLevels.onClick.AddListener(_onLevels);
+            if (btnSettings)    btnSettings.onClick.AddListener(_onSettings);
+            if (btnPrivacy)     btnPrivacy.onClick.AddListener(_onPrivacy);
+            if (btnLeaderboard) btnLeaderboard.onClick.AddListener(_onLeaderboard);
+            if (btnShop)        btnShop.onClick.AddListener(_onShop);
+            if (btnAchivments)  btnAchivments.onClick.AddListener(_onAch);
         }
-
-
 
         protected override void UnsubscribeUpdates()
         {
-            btnStartGame.onClick.RemoveListener(OnBtnStartGame);
-            btnLevels.onClick.RemoveListener(OnBtnLevels);
-            btnSettings.onClick.RemoveListener(OnBtnSettings);
-            btnPrivacy.onClick.RemoveListener(OnBtnPrivacy);
-            btnLeaderboard.onClick.RemoveListener(OnBtnLeaderboard);
-            btnShop.onClick.RemoveListener(_homeModel.Shop);
-            btnAchivments.onClick.RemoveListener(_homeModel.Achivments);
+            if (btnStartGame)   btnStartGame.onClick.RemoveListener(_onStartGame);
+            if (btnLevels)      btnLevels.onClick.RemoveListener(_onLevels);
+            if (btnSettings)    btnSettings.onClick.RemoveListener(_onSettings);
+            if (btnPrivacy)     btnPrivacy.onClick.RemoveListener(_onPrivacy);
+            if (btnLeaderboard) btnLeaderboard.onClick.RemoveListener(_onLeaderboard);
+            if (btnShop)        btnShop.onClick.RemoveListener(_onShop);
+            if (btnAchivments)  btnAchivments.onClick.RemoveListener(_onAch);
         }
 
         protected override void Cleanup()

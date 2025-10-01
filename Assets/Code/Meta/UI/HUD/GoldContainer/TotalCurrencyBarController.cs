@@ -1,8 +1,8 @@
-﻿using Code.Meta.UI.HUD.CurrencyContainer.Services;
+﻿using Code.Infrastructure.DependencyInjection;
+using Code.Meta.UI.HUD.CurrencyContainer.Services;
 using Code.Windows.UpdatableWindows;
 using TMPro;
 using UnityEngine;
-using Zenject;
 
 namespace Code.Meta.UI.HUD.CurrencyContainer
 {
@@ -34,7 +34,6 @@ namespace Code.Meta.UI.HUD.CurrencyContainer
         protected override void Cleanup()
         {
             _currencyService.SetTotalCurrencyBar(null);
-            _staticWindowService.Close(Id);
         }
     }
 }

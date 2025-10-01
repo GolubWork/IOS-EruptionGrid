@@ -1,6 +1,7 @@
-﻿using Code.Windows.StaticWindows;
+﻿using Code.Common.Helpers;
+using Code.Infrastructure.DependencyInjection;
+using Code.Windows.StaticWindows;
 using UnityEngine;
-using Zenject;
 
 namespace Code.Meta.UI.HUD
 {
@@ -16,6 +17,7 @@ namespace Code.Meta.UI.HUD
 
         private void Start()
         {
+            CustomDebug.Log("Home HUD");
             _staticWindowService.Open(StaticWindowId.HomeWindow);
         }
     }

@@ -1,5 +1,5 @@
+using Code.Infrastructure.DependencyInjection;
 using Entitas;
-using Zenject;
 
 namespace Code.Infrastructure.Systems
 {

@@ -2,8 +2,8 @@
 using Code.Gameplay.Items.Configs;
 using Code.Infrastructure.AssetManagement;
 using Code.Infrastructure.AssetManagement.Constants;
+using Code.Infrastructure.DependencyInjection;
 using Cysharp.Threading.Tasks;
-using Zenject;
 
 namespace Code.Gameplay.StaticData.ItemStaticData
 {

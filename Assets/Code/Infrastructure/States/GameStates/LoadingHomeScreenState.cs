@@ -1,3 +1,4 @@
+using Code.Common.Helpers;
 using Code.Gameplay.GameLoop;
 using Code.Infrastructure.AssetManagement.Constants;
 using Code.Infrastructure.Loading;
@@ -29,6 +30,7 @@ namespace Code.Infrastructure.States.GameStates
     
     public override void Enter()
     {
+      CustomDebug.Log("Enter LoadingHomeScreenState");
       _battleFeatureService.Deactivate();
       _sceneLoader.LoadSceneAddressable(ScenesDirectoryConstants.HomeScreenPath, EnterHomeScreenState);
     }

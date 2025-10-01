@@ -5,8 +5,8 @@ using Code.Gameplay.Abilities;
 using Code.Gameplay.Abilities.Configs;
 using Code.Infrastructure.AssetManagement;
 using Code.Infrastructure.AssetManagement.Constants;
+using Code.Infrastructure.DependencyInjection;
 using Cysharp.Threading.Tasks;
-using Zenject;
 
 namespace Code.Gameplay.StaticData.AbilityStaticData
 {

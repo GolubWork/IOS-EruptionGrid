@@ -1,7 +1,7 @@
 using Code.Gameplay.Common.Collisions;
+using Code.Infrastructure.DependencyInjection;
 using Code.Infrastructure.EntityViews.Registrars;
 using UnityEngine;
-using Zenject;
 
 namespace Code.Infrastructure.EntityViews.Behaviours.GameBehaviours
 {

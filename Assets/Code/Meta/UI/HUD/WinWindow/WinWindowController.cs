@@ -2,6 +2,7 @@
 using Code.Audios.Audio;
 using Code.Audios.Audio.Factory;
 using Code.Common.Helpers;
+using Code.Infrastructure.DependencyInjection;
 using Code.Infrastructure.Loading;
 using Code.Infrastructure.States.StateMachine;
 using Code.Meta.Levels.Configs;
@@ -11,7 +12,6 @@ using Code.Windows.UpdatableWindows;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using Zenject;
 
 namespace Code.Meta.UI.HUD.WinWindow
 {

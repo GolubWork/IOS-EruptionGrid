@@ -2,9 +2,9 @@ using System.Collections.Generic;
 using Code.Audios.Audio.Configs;
 using Code.Infrastructure.AssetManagement;
 using Code.Infrastructure.AssetManagement.Constants;
+using Code.Infrastructure.DependencyInjection;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
-using Zenject;
 
 namespace Code.Audios.Audio.Services
 {

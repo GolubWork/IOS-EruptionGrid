@@ -1,50 +1,48 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Code.Windows.UpdatableWindows
 {
     public class UpdatableWindowService : IUpdatableWindowService
     {
-        private readonly IUpdatableWindowFactory _updatableWindowFactory;
+        private readonly IUpdatableWindowFactory _factory;
+        private readonly List<UpdatableWindow> _opened = new();
+        private readonly HashSet<UpdatableWindowId> _openingNow = new(); // анти-рекурсия
 
-        private readonly List<UpdatableWindow> _openedWindows = new();
+        public UpdatableWindowService(IUpdatableWindowFactory factory) => _factory = factory;
 
-        public UpdatableWindowService(IUpdatableWindowFactory updatableWindowFactory) =>
-            _updatableWindowFactory = updatableWindowFactory;
-
-        public void Open(UpdatableWindowId staticWindowId) =>
-            _openedWindows.Add(_updatableWindowFactory.CreateWindow(staticWindowId));
-
-        public void Close(UpdatableWindowId staticWindowId)
+        public void Open(UpdatableWindowId id)
         {
-            UpdatableWindow window = _openedWindows.Find(x => x.Id == staticWindowId);
+            if (_openingNow.Contains(id)) return;
+            PurgeDead();
+            if (_opened.Any(w => w && w.Id == id)) return;
 
-            _openedWindows.Remove(window);
-
-            
-            if (window != null && window.gameObject != null)
+            try
             {
-                GameObject parent = window.transform.parent.gameObject;
-                GameObject.Destroy(parent);
+                _openingNow.Add(id);
+                var w = _factory.CreateWindow(id);
+                _opened.Add(w);
             }
-            
+            finally { _openingNow.Remove(id); }
+        }
+
+        public void Close(UpdatableWindowId id)
+        {
+            PurgeDead();
+            var w = _opened.FirstOrDefault(x => x && x.Id == id);
+            if (!w) return;
+            _opened.Remove(w);
+            if (w.gameObject) Object.Destroy(w.gameObject);
         }
 
         public void CloseAll()
         {
-            List<UpdatableWindow> windowsCopy = new List<UpdatableWindow>(_openedWindows);
-
-            foreach (UpdatableWindow window in windowsCopy)
-            {
-                if (window != null && window.gameObject != null)
-                {
-                    GameObject parent = window.transform.parent.gameObject;
-                    GameObject.Destroy(parent);
-                }
-            }
-
-            windowsCopy.Clear();
-            _openedWindows.Clear();
+            foreach (var w in _opened.Where(x => x && x.gameObject).ToList())
+                Object.Destroy(w.gameObject);
+            _opened.Clear();
         }
+
+        private void PurgeDead() => _opened.RemoveAll(x => !x || !x.gameObject);
     }
 }

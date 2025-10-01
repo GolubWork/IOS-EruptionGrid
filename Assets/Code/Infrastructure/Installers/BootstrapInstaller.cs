@@ -45,6 +45,7 @@ using Code.Gameplay.StaticData.WindowsStaticData;
 using Code.Gameplay.Statuses.Factory;
 using Code.Gameplay.Zones.Factories;
 using Code.Infrastructure.AssetManagement;
+using Code.Infrastructure.DependencyInjection;
 using Code.Infrastructure.EntityViews.Behaviours.AudioBehaviours;
 using Code.Infrastructure.EntityViews.Behaviours.GameBehaviours;
 using Code.Infrastructure.EntityViews.Fabrics;
@@ -75,7 +76,6 @@ using Code.Progress.SaveLoad;
 using Code.Windows.StaticWindows;
 using Code.Windows.UpdatableWindows;
 using UnityEngine;
-using Zenject;
 
 namespace Code.Infrastructure.Installers
 {
@@ -85,6 +85,7 @@ namespace Code.Infrastructure.Installers
         
         public override void InstallBindings()
         {
+            BindDI();
             BindInputService();
             BindAssetManagementServices();
             BindCommonServices();
@@ -105,6 +106,10 @@ namespace Code.Infrastructure.Installers
             BindPhysicsFactories();
         }
 
+        private void BindDI()
+        {
+            Container.Bind<IInstantiator>().To<UnityDiInstantiator>().AsSingle();
+        }
         private void BindAbilityServices()
         {
             
@@ -124,6 +129,10 @@ namespace Code.Infrastructure.Installers
         
         private void BindStateMachine()
         {
+            // гарантированно регистрируем интерфейс -> реализацию
+            Container.Bind<IGameStateMachine>().To<GameStateMachine>().AsSingle();
+
+            // (опционально) чтобы можно было резолвить и сам класс и прочие его интерфейсы:
             Container.BindInterfacesAndSelfTo<GameStateMachine>().AsSingle();
         }
 
@@ -268,7 +277,11 @@ namespace Code.Infrastructure.Installers
 
         private void BindUIServices()
         {
-            Container.BindInterfacesAndSelfTo<LoadingController>().FromComponentInNewPrefab(loadingController).AsSingle();
+            Container.BindInterfacesAndSelfTo<LoadingController>()
+                .FromComponentInNewPrefab<LoadingController>(
+                    loadingController,
+                    parent: this.transform)         // <— ВАЖНО: делаем ребёнком DI-Root
+                .AsSingle();
             
             Container.Bind<IStaticWindowService>().To<StaticWindowService>().AsSingle();
             Container.Bind<IUpdatableWindowService>().To<UpdatableWindowService>().AsSingle();
@@ -297,5 +310,7 @@ namespace Code.Infrastructure.Installers
         {
             Container.Resolve<IGameStateMachine>().Enter<BootstrapState>();
         }
+
+
     }
 }

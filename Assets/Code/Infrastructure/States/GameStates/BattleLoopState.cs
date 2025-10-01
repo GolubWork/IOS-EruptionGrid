@@ -1,3 +1,4 @@
+using Code.Common.Helpers;
 using Code.Gameplay;
 using Code.Gameplay.GameLoop;
 using Code.Infrastructure.States.StateInfrastructure;
@@ -7,22 +8,17 @@ namespace Code.Infrastructure.States.GameStates
 {
     public class BattleLoopState : EndOfFrameExitState
     {
-        private readonly ISystemFactory _systems;
         private readonly IBattleFeatureService _battleFeatureService;
-
-        private readonly GameContext _gameContext;
         private BattleFeature _battleFeature;
 
-        public BattleLoopState(GameContext gameContext, ISystemFactory systemFactory, IBattleFeatureService battleFeatureService)
+        public BattleLoopState(IBattleFeatureService battleFeatureService)
         {
-
-            _gameContext = gameContext;
-            _systems = systemFactory;
             _battleFeatureService = battleFeatureService;
         }
 
         public override void Enter()
         {
+            CustomDebug.Log("Enter BattleLoopState");
             _battleFeatureService.Activate();
         }        
 

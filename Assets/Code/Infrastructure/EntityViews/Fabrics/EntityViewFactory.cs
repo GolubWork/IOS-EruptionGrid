@@ -1,9 +1,9 @@
 using Code.Infrastructure.AssetManagement;
+using Code.Infrastructure.DependencyInjection;
 using Code.Infrastructure.EntityViews.Adapter.Adapters;
 using Code.Infrastructure.EntityViews.Behaviours;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
-using Zenject;
 
 namespace Code.Infrastructure.EntityViews.Fabrics
 {
@@ -31,7 +31,7 @@ namespace Code.Infrastructure.EntityViews.Fabrics
                 viewPrefab,
                 position: _farAway,
                 Quaternion.identity, 
-                parentTransform: null
+                null
             );
             view.SetEntity(entity);
             return view;
@@ -44,7 +44,7 @@ namespace Code.Infrastructure.EntityViews.Fabrics
                 adapter.ViewPrefab,
                 position: _farAway,
                 Quaternion.identity, 
-                parentTransform: null
+               null
             );
             view.SetEntity(entity);
             return view;

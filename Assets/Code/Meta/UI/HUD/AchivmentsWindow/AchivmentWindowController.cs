@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Code.Audios.Audio.Factory;
+using Code.Infrastructure.DependencyInjection;
 using Code.Meta.Achivments.Configs;
 using Code.Windows.StaticWindows;
 using UnityEngine;
 using UnityEngine.UI;
-using Zenject;
 
 namespace Code.Meta.UI.HUD.AchivmentsWindow
 {

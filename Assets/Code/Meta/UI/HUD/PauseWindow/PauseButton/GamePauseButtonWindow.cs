@@ -1,10 +1,10 @@
 using Code.Audios.Audio.Factory;
+using Code.Infrastructure.DependencyInjection;
 using Code.Infrastructure.States.StateMachine;
 using Code.Meta.UI.HUD.PauseWindow.PauseButton.Services;
 using Code.Windows.StaticWindows;
 using UnityEngine;
 using UnityEngine.UI;
-using Zenject;
 
 namespace Code.Meta.UI.HUD.PauseWindow.PauseButton
 {

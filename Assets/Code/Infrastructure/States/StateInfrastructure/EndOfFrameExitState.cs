@@ -9,9 +9,7 @@ namespace Code.Infrastructure.States.StateInfrastructure
         protected bool ExitWasRequested =>
             _exitCompletionSource != null;
 
-        public virtual void Enter()
-        {
-        }
+        public virtual void Enter() { }
 
         UniTask IExitableState.BeginExit()
         {
@@ -34,10 +32,7 @@ namespace Code.Infrastructure.States.StateInfrastructure
                 ResolveExitPromise();
         }
 
-        protected virtual void ExitOnEndOfFrame()
-        {
-      
-        }
+        protected virtual void ExitOnEndOfFrame() { }
 
         protected virtual void OnUpdate(){}
 

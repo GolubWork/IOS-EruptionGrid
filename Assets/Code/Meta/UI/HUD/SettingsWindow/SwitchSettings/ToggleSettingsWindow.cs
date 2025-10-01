@@ -1,10 +1,10 @@
 using Code.Audios.Audio.Factory;
+using Code.Infrastructure.DependencyInjection;
 using Code.Meta.UI.HUD.SettingsWindow.Services;
 using Code.Progress.SaveLoad;
 using Code.Windows.StaticWindows;
 using UnityEngine;
 using UnityEngine.UI;
-using Zenject;
 
 namespace Code.Meta.UI.HUD.SettingsWindow.SwitchSettings
 {
