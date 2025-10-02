@@ -113,8 +113,7 @@ jobs:
         run: |
           eval "$(ssh-agent -s)"
           ssh-add - <<< "${MATCH_DEPLOY_KEY}"
-          find $IOS_BUILD_PATH -type f -name "**.sh" -exec chmod +x {} \;
-          xcode-select --switch /Applications/Xcode_16.3.app
+          find $IOS_BUILD_PATH -type f -name "**.sh" -exec chmod +x {} \;          
           sed -i '' 's/-mno-thumb//g' "$IOS_BUILD_PATH/iOS/Unity-iPhone.xcodeproj/project.pbxproj" || sed -i 's/-mno-thumb//g' "$IOS_BUILD_PATH/iOS/Unity-iPhone.xcodeproj/project.pbxproj"
           bundle install
           #bundle exec fastlane ios release
