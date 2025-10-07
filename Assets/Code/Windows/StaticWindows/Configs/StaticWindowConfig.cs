@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Code.Windows.StaticWindows.Configs
 {
-  [Serializable]
+  [System.Serializable]
   public class StaticWindowConfig
   {
     public StaticWindowId Id;

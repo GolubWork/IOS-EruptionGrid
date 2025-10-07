@@ -23,13 +23,11 @@ namespace Code.Infrastructure.States.StateMachine
 
     public void Enter<TState>() where TState : class, IState
     {
-      Debug.Log($"[GSM] Enter<{typeof(TState).Name}>");
       RequestEnter<TState>().Forget();
     }
 
     public void Enter<TState, TPayload>(TPayload payload) where TState : class, IPayloadState<TPayload>
     {
-      Debug.Log($"[GSM] Enter<{typeof(TState).Name}, {typeof(TPayload).Name}> payload={payload}");
       RequestEnter<TState, TPayload>(payload).Forget();
     }
 
@@ -53,7 +51,6 @@ namespace Code.Infrastructure.States.StateMachine
     {
       _activeState = state;
       _activeStateType = typeof(TState);
-      Debug.Log($"[GSM] -> calling {typeof(TState).Name}.Enter()");
       state.Enter();
       return state;
     }
@@ -63,7 +60,6 @@ namespace Code.Infrastructure.States.StateMachine
     {
       _activeState = state;
       _activeStateType = typeof(TState);
-      Debug.Log($"[GSM] -> calling {typeof(TState).Name}.Enter(payload)");
       state.Enter(payload);
       return state;
     }
@@ -74,10 +70,7 @@ namespace Code.Infrastructure.States.StateMachine
       {
         try
         {
-          Debug.Log($"[GSM] BeginExit {_activeState.GetType().Name}...");
-          // страхуемся от вечного ожидания
           await _activeState.BeginExit().Timeout(TimeSpan.FromSeconds(5));
-          Debug.Log($"[GSM] EndExit {_activeState.GetType().Name}");
           _activeState.EndExit();
         }
         catch (Exception e)
@@ -91,9 +84,7 @@ namespace Code.Infrastructure.States.StateMachine
 
     private TState ChangeState<TState>() where TState : class, IExitableState
     {
-      Debug.Log($"[GSM] Resolve state {typeof(TState).Name}...");
       TState state = _stateFactory.GetState<TState>();
-      Debug.Log($"[GSM] Resolved instance: {state?.GetType().Name ?? "NULL"}");
       return state;
     }
   }
