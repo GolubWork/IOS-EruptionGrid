@@ -43,7 +43,7 @@ namespace Code.Gameplay.Eggs.Factories
             defaultObject.ReplaceWorldPosition(at + new Vector3(0.3f, -0.3f, -1));
             defaultObject.SpriteRenderer.sprite = _randomSpriteProvider.GetRandomSprite();
             defaultObject.Rigidbody2D.position = at + new Vector3(0.3f, -0.3f, -1);
-            defaultObject.Rigidbody2D.linearVelocity = new Vector2(Random.Range(-1,1f),0);
+            defaultObject.Rigidbody2D.velocity = new Vector2(Random.Range(-1,1f),0);
             defaultObject.Rigidbody2D.bodyType = RigidbodyType2D.Dynamic;
             return defaultObject;
         }
