@@ -7,13 +7,13 @@ namespace Code.Meta.Achivments.Systems
 {
     public class ProcessTapCounterSystem: IExecuteSystem
     {
-        private readonly ITouchInputService _inputService;
+        private readonly INewInputService _inputService1;
         private readonly IGroup<MetaEntity> _tapCounters;
         private readonly IGroup<MetaEntity> _achivments;
 
-        public ProcessTapCounterSystem(MetaContext meta, ITouchInputService inputService)
+        public ProcessTapCounterSystem(MetaContext meta, INewInputService inputService1)
         {
-            _inputService = inputService;
+            _inputService1 = inputService1;
             _tapCounters = meta.GetGroup(MetaMatcher.AllOf(
                 MetaMatcher.TapCounter,
                 MetaMatcher.TapTargetCount
@@ -30,7 +30,7 @@ namespace Code.Meta.Achivments.Systems
             if(_tapCounters.GetEntities().Length == 0) return;
             MetaEntity tapCounter = _tapCounters.GetEntities().FirstOrDefault();
             if(tapCounter == null) return;
-            if (_inputService.GetLeftMouseButtonDown())
+            if (_inputService1.GetTouchDown())
             {
                 tapCounter.ReplaceTapCounted(tapCounter.TapCounted + 1);
             }

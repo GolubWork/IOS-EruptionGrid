@@ -4,21 +4,15 @@ using UnityEngine.InputSystem;
 
 namespace Code.Input.Service
 {
-    public class NewInputService : ITouchInputService
+    public class NewInputService :INewInputService
     {
         private Camera _mainCamera;
-        private Vector3 _screenPosition;
 
-        private BaseActions _playerInput;
-        private InputAction _moveAction;
-        private InputAction _clickAction;
-
-        public void Init(BaseActions playerInput, InputAction moveAction, InputAction clickAction)
+        public void Init(BaseActions playerInput = null, InputAction moveAction = null, InputAction clickAction = null)
         {
-            _playerInput = playerInput;
-            _moveAction = moveAction;
-            _clickAction = clickAction;
+            // Для тача ничего не нужно
         }
+
         public Camera CameraMain
         {
             get
@@ -29,57 +23,93 @@ namespace Code.Input.Service
             }
         }
 
-        public Vector2 GetScreenMousePosition()
+        /// <summary>
+        /// Возвращает позицию первого активного тача на экране
+        /// </summary>
+        public Vector2 GetScreenTouchPosition()
         {
-            if (Mouse.current != null)
-                return Mouse.current.position.ReadValue();
-            return Vector2.zero;
-        }
-
-        public Vector2 GetWorldMousePosition()
-        {
-            if (CameraMain == null)
+            if (Touchscreen.current == null || Touchscreen.current.touches.Count == 0)
                 return Vector2.zero;
 
-            _screenPosition.x = GetScreenMousePosition().x;
-            _screenPosition.y = GetScreenMousePosition().y;
-            return CameraMain.ScreenToWorldPoint(_screenPosition);
+            return Touchscreen.current.touches[0].position.ReadValue();
         }
 
-        public bool HasAxisInput()
+        /// <summary>
+        /// Возвращает позицию тача в мировых координатах
+        /// </summary>
+        public Vector3 GetWorldTouchPosition()
         {
-            Vector2 move = _moveAction.ReadValue<Vector2>();
-            return move != Vector2.zero;
+            if (CameraMain == null)
+                return Vector3.zero;
+
+            Vector2 screenPos = GetScreenTouchPosition();
+            return CameraMain.ScreenToWorldPoint(new Vector3(screenPos.x, screenPos.y, CameraMain.nearClipPlane));
         }
 
-        public bool HasTouchInput()
+        /// <summary>
+        /// Проверка, был ли тач на этом кадре
+        /// </summary>
+        public bool GetTouchDown()
         {
-            return Touchscreen.current != null && Touchscreen.current.touches.Count > 0;
+            if (Touchscreen.current == null)
+                return false;
+
+            foreach (var touch in Touchscreen.current.touches)
+            {
+                if (touch.press.wasPressedThisFrame)
+                {
+                    int touchId = touch.touchId.ReadValue();
+                    bool isOverUI = EventSystem.current != null && EventSystem.current.IsPointerOverGameObject(touchId);
+
+                    if (!isOverUI)
+                    {
+                        Debug.Log($"[Input] Touch detected, touchId={touchId}");
+                        return true;
+                    }
+                }
+            }
+
+            return false;
         }
 
-        public float GetVerticalAxis()
-        {
-            return _moveAction.ReadValue<Vector2>().y;
-        }
-
-        public float GetHorizontalAxis()
-        {
-            return _moveAction.ReadValue<Vector2>().x;
-        }
-
+        /// <summary>
+        /// Проверка, удерживается ли тач
+        /// </summary>
         public bool GetLeftMouseButton()
         {
-            return _clickAction.ReadValue<float>() > 0 && !EventSystem.current.IsPointerOverGameObject();
+            if (Touchscreen.current == null)
+                return false;
+
+            foreach (var touch in Touchscreen.current.touches)
+            {
+                int touchId = touch.touchId.ReadValue();
+                bool isOverUI = EventSystem.current != null && EventSystem.current.IsPointerOverGameObject(touchId);
+
+                if (touch.press.isPressed && !isOverUI)
+                    return true;
+            }
+
+            return false;
         }
 
-        public bool GetLeftMouseButtonDown()
-        {
-            return _clickAction.WasPressedThisFrame() && !EventSystem.current.IsPointerOverGameObject();
-        }
-
+        /// <summary>
+        /// Проверка, отпущен ли тач
+        /// </summary>
         public bool GetLeftMouseButtonUp()
         {
-            return _clickAction.WasReleasedThisFrame() && !EventSystem.current.IsPointerOverGameObject();
+            if (Touchscreen.current == null)
+                return false;
+
+            foreach (var touch in Touchscreen.current.touches)
+            {
+                int touchId = touch.touchId.ReadValue();
+                bool isOverUI = EventSystem.current != null && EventSystem.current.IsPointerOverGameObject(touchId);
+
+                if (touch.press.wasReleasedThisFrame && !isOverUI)
+                    return true;
+            }
+
+            return false;
         }
 
         public bool InputAvaliable { get; set; } = true;

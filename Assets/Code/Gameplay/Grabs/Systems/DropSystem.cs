@@ -9,15 +9,15 @@ namespace Code.Gameplay.Grabs.Systems
 {
     public class DropSystem: IExecuteSystem
     {
-        private readonly ITouchInputService _inputService;
+        private readonly INewInputService _inputService1;
         private readonly IGroup<GameEntity> _grabed;
         private List<GameEntity> _buffer = new (1);
 
 
         public DropSystem(GameContext game,
-            ITouchInputService inputService)
+            INewInputService inputService1)
         {
-            _inputService = inputService;
+            _inputService1 = inputService1;
             _grabed = game.GetGroup(GameMatcher.AllOf(
                 GameMatcher.Grabed
             ));
@@ -25,7 +25,7 @@ namespace Code.Gameplay.Grabs.Systems
 
         public void Execute()
         {
-            if (_inputService.GetLeftMouseButtonUp())
+            if (_inputService1.GetLeftMouseButtonUp())
             {
                 foreach (GameEntity grabed in _grabed.GetEntities(_buffer))
                 {

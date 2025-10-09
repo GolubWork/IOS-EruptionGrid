@@ -269,7 +269,7 @@ namespace Code.Infrastructure.Installers
 
         private void BindInputService()
         {
-            Container.Bind<ITouchInputService>().To<NewInputService>().AsSingle();
+            Container.Bind<INewInputService>().To<NewInputService>().AsSingle();
             
             Container.Bind<ICurrentScoreBarService>().To<CurrentScoreBarService>().AsSingle();
             Container.Bind<IBestScoreBarService>().To<BestScoreBarService>().AsSingle();

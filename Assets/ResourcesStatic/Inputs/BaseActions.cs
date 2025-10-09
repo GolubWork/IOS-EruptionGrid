@@ -44,28 +44,48 @@ public partial class @BaseActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Position"",
+                    ""type"": ""Value"",
+                    ""id"": ""3dedd31c-6d34-4a63-b494-1cf333c53e6a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
                 {
                     ""name"": """",
-                    ""id"": ""355a014b-c6a2-43da-b5d5-3499d47604d2"",
-                    ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": """",
+                    ""id"": ""0fb36cf8-b0d1-453e-ae93-8801da09a5fd"",
+                    ""path"": ""<Touchscreen>/Press"",
+                    ""interactions"": ""Tap"",
                     ""processors"": """",
-                    ""groups"": "";PC"",
+                    ""groups"": ""PC"",
                     ""action"": ""Tap"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""7ac3f0cc-d918-486f-944e-29bc02c8c680"",
-                    ""path"": ""<Mouse>/position"",
+                    ""id"": ""4b919692-16ad-467b-9ef6-1a09f7e4e37f"",
+                    ""path"": ""<Touchscreen>/position"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": "";PC"",
+                    ""groups"": """",
                     ""action"": ""Slide"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d4ceb5f2-960d-4ad5-8432-b19064cdbbcc"",
+                    ""path"": ""<Touchscreen>/Press"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Position"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -84,6 +104,7 @@ public partial class @BaseActions: IInputActionCollection2, IDisposable
         m_Gameplay = asset.FindActionMap("Gameplay", throwIfNotFound: true);
         m_Gameplay_Tap = m_Gameplay.FindAction("Tap", throwIfNotFound: true);
         m_Gameplay_Slide = m_Gameplay.FindAction("Slide", throwIfNotFound: true);
+        m_Gameplay_Position = m_Gameplay.FindAction("Position", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -147,12 +168,14 @@ public partial class @BaseActions: IInputActionCollection2, IDisposable
     private List<IGameplayActions> m_GameplayActionsCallbackInterfaces = new List<IGameplayActions>();
     private readonly InputAction m_Gameplay_Tap;
     private readonly InputAction m_Gameplay_Slide;
+    private readonly InputAction m_Gameplay_Position;
     public struct GameplayActions
     {
         private @BaseActions m_Wrapper;
         public GameplayActions(@BaseActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Tap => m_Wrapper.m_Gameplay_Tap;
         public InputAction @Slide => m_Wrapper.m_Gameplay_Slide;
+        public InputAction @Position => m_Wrapper.m_Gameplay_Position;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -168,6 +191,9 @@ public partial class @BaseActions: IInputActionCollection2, IDisposable
             @Slide.started += instance.OnSlide;
             @Slide.performed += instance.OnSlide;
             @Slide.canceled += instance.OnSlide;
+            @Position.started += instance.OnPosition;
+            @Position.performed += instance.OnPosition;
+            @Position.canceled += instance.OnPosition;
         }
 
         private void UnregisterCallbacks(IGameplayActions instance)
@@ -178,6 +204,9 @@ public partial class @BaseActions: IInputActionCollection2, IDisposable
             @Slide.started -= instance.OnSlide;
             @Slide.performed -= instance.OnSlide;
             @Slide.canceled -= instance.OnSlide;
+            @Position.started -= instance.OnPosition;
+            @Position.performed -= instance.OnPosition;
+            @Position.canceled -= instance.OnPosition;
         }
 
         public void RemoveCallbacks(IGameplayActions instance)
@@ -208,5 +237,6 @@ public partial class @BaseActions: IInputActionCollection2, IDisposable
     {
         void OnTap(InputAction.CallbackContext context);
         void OnSlide(InputAction.CallbackContext context);
+        void OnPosition(InputAction.CallbackContext context);
     }
 }

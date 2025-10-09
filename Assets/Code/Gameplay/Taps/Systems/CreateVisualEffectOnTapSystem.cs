@@ -8,16 +8,16 @@ namespace Code.Gameplay.Taps.Systems
     public class CreateVisualEffectOnTapSystem: IExecuteSystem
     {
         private readonly IVisualEffectFactory _visualEffectFactory;
-        private readonly ITouchInputService _inputService;
+        private readonly INewInputService _inputService1;
         private readonly IGroup<GameEntity> _taped;
         private List<GameEntity> _buffer = new (1);
 
         public CreateVisualEffectOnTapSystem(GameContext game, 
             IVisualEffectFactory visualEffectFactory,
-            ITouchInputService inputService)
+            INewInputService inputService1)
         {
             _visualEffectFactory = visualEffectFactory;
-            _inputService = inputService;
+            _inputService1 = inputService1;
             _taped = game.GetGroup(GameMatcher.AllOf(
                 GameMatcher.Taped,
                 GameMatcher.TapVisualEffectConfig
@@ -28,7 +28,7 @@ namespace Code.Gameplay.Taps.Systems
         {
             foreach (GameEntity taped in _taped.GetEntities(_buffer))
             {
-                _visualEffectFactory.CreateVisualEffect(taped.TapVisualEffectConfig, taped.Id, taped.Id, _inputService.GetWorldMousePosition());
+                _visualEffectFactory.CreateVisualEffect(taped.TapVisualEffectConfig, taped.Id, taped.Id, _inputService1.GetWorldTouchPosition());
             }
         }
     }

@@ -11,7 +11,7 @@ namespace Code.Gameplay.Cards.Helper
     {
         private readonly IEffectFactory _effectFactory;
         private readonly IEffectStaticDataService _effectStaticDataService;
-        private readonly ITouchInputService _inputService;
+        private readonly INewInputService _inputService1;
 
         public GameEntity FirstCard = null;
         public GameEntity SecondCard = null;
@@ -21,11 +21,11 @@ namespace Code.Gameplay.Cards.Helper
         public CardComparer(
             IEffectFactory effectFactory, 
             IEffectStaticDataService effectStaticDataService, 
-            ITouchInputService inputService)
+            INewInputService inputService1)
         {
             _effectFactory = effectFactory;
             _effectStaticDataService = effectStaticDataService;
-            _inputService = inputService;
+            _inputService1 = inputService1;
         }
 
         public bool isFirstCardAsigned { get; set; } = false;
@@ -45,7 +45,7 @@ namespace Code.Gameplay.Cards.Helper
                 return;
             }
 
-            _inputService.InputAvaliable = false;
+            _inputService1.InputAvaliable = false;
             SecondCard = card;
 
             CustomDebug.Log($"Вторая карта: {SecondCard.CardTypeId}");
@@ -88,7 +88,7 @@ namespace Code.Gameplay.Cards.Helper
         private void EndProcessing()
         {
             _isProcessingPair = false; 
-            _inputService.InputAvaliable = true;
+            _inputService1.InputAvaliable = true;
             CustomDebug.Log("Обработка пары завершена, ввод разблокирован.");
         }
 

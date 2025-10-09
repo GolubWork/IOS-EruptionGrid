@@ -9,13 +9,13 @@ namespace Code.Input.Systems
 {
     public class InitializeInputSystem : IInitializeSystem, ITearDownSystem
     {
-        private readonly ITouchInputService _inputService;
+        private readonly INewInputService _inputService1;
         private BaseActions _actions;
         private readonly IGroup<InputEntity> _inputs;
 
-        public InitializeInputSystem(InputContext input, ITouchInputService inputService)
+        public InitializeInputSystem(InputContext input, INewInputService inputService1)
         {
-            _inputService = inputService;
+            _inputService1 = inputService1;
             _inputs = input.GetGroup(InputMatcher.Input);
         }
 
@@ -29,7 +29,7 @@ namespace Code.Input.Systems
             
             CustomDebug.Log($"Initializing Input System, moveAction: {moveAction}, clickAction: {clickAction}");
             
-            _inputService.Init(_actions, moveAction, clickAction);
+            _inputService1.Init(_actions, moveAction, clickAction);
             
             if(_inputs.GetEntities().Length > 0) return;
             CreateInputEntity.Empty()
