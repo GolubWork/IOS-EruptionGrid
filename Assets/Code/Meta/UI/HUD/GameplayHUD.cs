@@ -1,6 +1,7 @@
 using Code.Audios.Audio;
 using Code.Audios.Audio.Factory;
 using Code.Infrastructure.DependencyInjection;
+using Code.Meta.UI.HUD.LoadingWindow;
 using Code.Progress.SaveLoad;
 using Code.Windows.StaticWindows;
 using Code.Windows.UpdatableWindows;
@@ -13,13 +14,20 @@ namespace Code.Meta.UI.HUD
         private IAudioFactory _audioFactory;
         private IStaticWindowService _staticWindowService;
         private IUpdatableWindowService _updatableWindowService;
+        private LoadingController _loadingWindow;
 
         [Inject]
-        private void Construct(ISaveLoadService saveLoadService,IAudioFactory audioFactory, IStaticWindowService staticWindowService, IUpdatableWindowService updatableWindowService)
+        private void Construct(
+            ISaveLoadService saveLoadService,
+            IAudioFactory audioFactory, 
+            IStaticWindowService staticWindowService, 
+            IUpdatableWindowService updatableWindowService,
+            LoadingController loadingWindow)
         {
             _audioFactory = audioFactory;
             _staticWindowService = staticWindowService;
             _updatableWindowService = updatableWindowService;
+            _loadingWindow = loadingWindow;
         }
         
         private void Start()

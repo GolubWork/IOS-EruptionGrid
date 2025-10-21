@@ -13,7 +13,6 @@ namespace Code.Gameplay.Score.Systems
         {
             _bestScoreBarService = bestScoreBarService;
             _scoreStorages = meta.GetGroup(MetaMatcher.AllOf(
-                MetaMatcher.Storage,
                 MetaMatcher.BestScore
                 ));
         }

@@ -11,7 +11,6 @@ namespace Code.Meta.UI.HUD.PrivacyWindow
     {
         [SerializeField] private Button btnReturn;
         [SerializeField] private TextMeshProUGUI privacyTextContainer;
-        [SerializeField] private string privacyText;
         
         private PrivacyWindowModel _model;
         private IStaticWindowService _staticWindowService;
@@ -31,7 +30,7 @@ namespace Code.Meta.UI.HUD.PrivacyWindow
         protected override void Initialize()
         {
             _model = new PrivacyWindowModel(_staticWindowService, _audioFactory);
-            _model.SetPrivacyText(privacyTextContainer, privacyText);
+            _model.SetPrivacyText(privacyTextContainer);
         }
         
         protected override void SubscribeUpdates()

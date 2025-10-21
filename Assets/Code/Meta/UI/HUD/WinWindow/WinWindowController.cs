@@ -7,6 +7,7 @@ using Code.Infrastructure.Loading;
 using Code.Infrastructure.States.StateMachine;
 using Code.Meta.Levels.Configs;
 using Code.Meta.UI.HUD.GameOverWindow;
+using Code.Meta.UI.HUD.LoadingWindow;
 using Code.Windows.StaticWindows;
 using Code.Windows.UpdatableWindows;
 using TMPro;
@@ -31,6 +32,7 @@ namespace Code.Meta.UI.HUD.WinWindow
         private IAudioFactory _audioFactory;
         private ISceneLoader _sceneLoader;
         private IUpdatableWindowService _updatableWindowService;
+        private LoadingController _loadingController;
 
         [Inject]
         private void Construct(
@@ -40,7 +42,8 @@ namespace Code.Meta.UI.HUD.WinWindow
             IStaticWindowService staticWindowService, 
             IAudioFactory audioFactory,
             ISceneLoader sceneLoader,
-            IUpdatableWindowService updatableWindowService)
+            IUpdatableWindowService updatableWindowService,
+            LoadingController loadingController)
         {
             Id = StaticWindowId.GameWinWindow;
             
@@ -49,6 +52,7 @@ namespace Code.Meta.UI.HUD.WinWindow
             _audioFactory = audioFactory;
             _sceneLoader = sceneLoader;
             _updatableWindowService = updatableWindowService;
+            _loadingController = loadingController;
 
             MetaEntity storage = meta.GetGroup(MetaMatcher.AllOf(
                 MetaMatcher.Storage,
@@ -134,7 +138,7 @@ namespace Code.Meta.UI.HUD.WinWindow
             CustomDebug.LogWarning("Dont forget to close windows on Win Window");
             //_staticWindowService.CloseAll();
             _updatableWindowService.CloseAll();
-            _model = new GameOverWindowModel(Id, _stateMachine, _staticWindowService, _audioFactory, _sceneLoader);
+            _model = new GameOverWindowModel(Id, _stateMachine, _staticWindowService, _audioFactory, _sceneLoader, _loadingController);
         }
         protected override void SubscribeUpdates()
         {

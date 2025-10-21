@@ -10,7 +10,9 @@ namespace Code.Gameplay.GridCells
     [Game] public class ActiveCellProcessed : IComponent {  }
     [Game] public class ReferenceCell : IComponent {  }
     [Game] public class PlayerCell : IComponent {  }
+    [Game] public class GridInitialized : IComponent {  }
     [Game] public class LinkedCellId : IComponent { public int Value; }
+    [Game] public class TargetCellSize : IComponent { public float Value; }
     [Game] public class CellGridCoordinates : IComponent { public Vector2Int Value; }
     
     

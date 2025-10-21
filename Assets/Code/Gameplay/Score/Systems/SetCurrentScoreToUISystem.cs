@@ -13,7 +13,6 @@ namespace Code.Gameplay.Score.Systems
         {
             _currentScoreBarService = currentScoreBarService;
             _scoreStorages = meta.GetGroup(MetaMatcher.AllOf(
-                MetaMatcher.Storage, 
                 MetaMatcher.SessionScore));
         }
 

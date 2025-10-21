@@ -1,4 +1,6 @@
 ﻿using System;
+using Code.Audios.Audio;
+using Code.Audios.Audio.Factory;
 using Code.Common.Helpers;
 using Code.Gameplay.StaticData.SkinStaticData;
 using Code.Meta.Shop.Configs.ShopItems;
@@ -21,13 +23,16 @@ namespace Code.Meta.UI.HUD.ShopWindow.SkinShop
         private IShopFactory _shopFactory;
         private IShopItem _shopItem;
         private ISkinDataProvider _skinDataProvider;
-        
+        private IAudioFactory _audioFactory;
+
         public void Init(
             IShopFactory shopFactory, 
-            ISkinDataProvider skinDataProvider)
+            ISkinDataProvider skinDataProvider,
+            IAudioFactory audioFactory)
         {
             _shopFactory = shopFactory;
             _skinDataProvider = skinDataProvider;
+            _audioFactory = audioFactory;
         }
         
         public void UpdateBar(IShopItem shopItem)
@@ -129,16 +134,19 @@ namespace Code.Meta.UI.HUD.ShopWindow.SkinShop
         }
         private void NotImplemented()
         {
+            _audioFactory.CreateSound(SoundTypeId.BtnClick);
             CustomDebug.LogWarning("Not Implemented");
         }
 
         private void Purchase()
         {
+            _audioFactory.CreateSound(SoundTypeId.BtnClick);
             _shopFactory.BuyRequest(_shopItem);
         }
         
         private void Select()
         {
+            _audioFactory.CreateSound(SoundTypeId.BtnClick);
             _shopFactory.SelectRequest(_shopItem);
         }
     }

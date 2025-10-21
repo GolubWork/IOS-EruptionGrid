@@ -1,0 +1,479 @@
+fileFormatVersion: 2
+guid: 7dfa5838bb0343f45801ddffe172eba5
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 15
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Chicken_Sprite_Sheet_Light_Brown_0
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 98
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3464fe2ff9aa65d4bb53744e34fac462
+      internalID: 953252740
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chicken_Sprite_Sheet_Light_Brown_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 98
+        width: 30
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 224551de4f26e224199a7c996779a3b2
+      internalID: 399684045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chicken_Sprite_Sheet_Light_Brown_2
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 98
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f86d774a8e70c4409b0cf7d45a2250a
+      internalID: 732589616
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chicken_Sprite_Sheet_Light_Brown_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 98
+        width: 30
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1781b0b6d1b2254a89b2727025c782d
+      internalID: -996494606
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chicken_Sprite_Sheet_Light_Brown_4
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 66
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d1a7fd9086aeeb4e95c950bca8bb281
+      internalID: 1031219083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chicken_Sprite_Sheet_Light_Brown_5
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 66
+        width: 28
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe05a38864e2e874188b705499b569c1
+      internalID: -1249924935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chicken_Sprite_Sheet_Light_Brown_6
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 66
+        width: 28
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19e0c01c42c6f5145b848d70d606a7bf
+      internalID: -2015016131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chicken_Sprite_Sheet_Light_Brown_7
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 66
+        width: 28
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e252aaf5d1613bf45bb2908390d2c60e
+      internalID: 1293397435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chicken_Sprite_Sheet_Light_Brown_8
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 34
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30439b524cd002e4f8c7bfbcc85d8508
+      internalID: -801927196
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chicken_Sprite_Sheet_Light_Brown_9
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 34
+        width: 28
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 903e2a8a870b73e4d871314e902e150e
+      internalID: 1546026717
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chicken_Sprite_Sheet_Light_Brown_10
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 34
+        width: 28
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1cb72de0f0fd5b34cbc7c717e5f3cd81
+      internalID: 828108016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chicken_Sprite_Sheet_Light_Brown_11
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 34
+        width: 28
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab331948a9921604284b80965e1f7d42
+      internalID: -1669593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chicken_Sprite_Sheet_Light_Brown_12
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 2
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b47f4e5a98985c343838319a0eaa9a2e
+      internalID: 1702415945
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chicken_Sprite_Sheet_Light_Brown_13
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 2
+        width: 30
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 423fdd15019c3024a819c5b1f8d841b9
+      internalID: -919113751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chicken_Sprite_Sheet_Light_Brown_14
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 2
+        width: 30
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3862eeb08e430254f948a241430bf337
+      internalID: -603310120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chicken_Sprite_Sheet_Light_Brown_15
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 2
+        width: 30
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 551bf07a530172240b89e06a5d3a359c
+      internalID: -1537675519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Chicken_Sprite_Sheet_Light_Brown_0: 953252740
+      Chicken_Sprite_Sheet_Light_Brown_1: 399684045
+      Chicken_Sprite_Sheet_Light_Brown_10: 828108016
+      Chicken_Sprite_Sheet_Light_Brown_11: -1669593
+      Chicken_Sprite_Sheet_Light_Brown_12: 1702415945
+      Chicken_Sprite_Sheet_Light_Brown_13: -919113751
+      Chicken_Sprite_Sheet_Light_Brown_14: -603310120
+      Chicken_Sprite_Sheet_Light_Brown_15: -1537675519
+      Chicken_Sprite_Sheet_Light_Brown_2: 732589616
+      Chicken_Sprite_Sheet_Light_Brown_3: -996494606
+      Chicken_Sprite_Sheet_Light_Brown_4: 1031219083
+      Chicken_Sprite_Sheet_Light_Brown_5: -1249924935
+      Chicken_Sprite_Sheet_Light_Brown_6: -2015016131
+      Chicken_Sprite_Sheet_Light_Brown_7: 1293397435
+      Chicken_Sprite_Sheet_Light_Brown_8: -801927196
+      Chicken_Sprite_Sheet_Light_Brown_9: 1546026717
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

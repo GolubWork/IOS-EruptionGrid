@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Code.Gameplay.EffectsVisual.Configs
 {
-    [Serializable]
+    [System.Serializable]
     public class VisualEffectConfig
     {
         public VisualEffectTypeId effectTypeId;

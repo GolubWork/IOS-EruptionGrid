@@ -7,7 +7,8 @@ namespace Code.Gameplay.Cameras
     {
         public CameraFeature(ISystemFactory systems)
         {
-            Add(systems.Create<CreatePhysicsBordersSystem>());
+            //Add(systems.Create<CreatePhysicsBordersSystem>());
+            Add(systems.Create<CameraFollowSystem>());
         }
     }
 }

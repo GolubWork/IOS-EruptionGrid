@@ -3,6 +3,7 @@ using Code.Common.Helpers;
 using Code.Infrastructure.DependencyInjection;
 using Code.Infrastructure.Loading;
 using Code.Infrastructure.States.StateMachine;
+using Code.Meta.UI.HUD.LoadingWindow;
 using Code.Windows.StaticWindows;
 using Code.Windows.UpdatableWindows;
 using TMPro;
@@ -26,6 +27,7 @@ namespace Code.Meta.UI.HUD.GameOverWindow
         private IAudioFactory _audioFactory;
         private ISceneLoader _sceneLoader;
         private IUpdatableWindowService _updatableWindowService;
+        private LoadingController _loadingController;
 
         [Inject]
         private void Construct(
@@ -34,7 +36,8 @@ namespace Code.Meta.UI.HUD.GameOverWindow
             IStaticWindowService staticWindowService, 
             IAudioFactory audioFactory,
             ISceneLoader sceneLoader,
-            IUpdatableWindowService updatableWindowService)
+            IUpdatableWindowService updatableWindowService,
+            LoadingController loadingController)
         {
             Id = StaticWindowId.GameOverWindow;
             
@@ -43,6 +46,7 @@ namespace Code.Meta.UI.HUD.GameOverWindow
             _audioFactory = audioFactory;
             _sceneLoader = sceneLoader;
             _updatableWindowService = updatableWindowService;
+            _loadingController = loadingController;
 
             SetScoreToUI(meta);
         }
@@ -94,7 +98,7 @@ namespace Code.Meta.UI.HUD.GameOverWindow
         {
             CustomDebug.LogWarning("Dont forget to close windows on GameOver Window");
             _updatableWindowService.CloseAll();
-            _model = new GameOverWindowModel(Id, _stateMachine, _staticWindowService, _audioFactory, _sceneLoader);
+            _model = new GameOverWindowModel(Id, _stateMachine, _staticWindowService, _audioFactory, _sceneLoader, _loadingController);
         }
 
 

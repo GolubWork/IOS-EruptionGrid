@@ -9,6 +9,7 @@ namespace Code.Gameplay.Effects
         {
             Add(systems.Create<RemoveEffectsWithoutTargetsSystem>());
             Add(systems.Create<ProcessAddScorePointsEffectSystem>());
+            Add(systems.Create<ProcessDamageEffect>());
             Add(systems.Create<ProcessTapEffectSystem>());
             Add(systems.Create<ProcessAddCurrencyEffect>());
             Add(systems.Create<CleanUpProcessedEffects>());

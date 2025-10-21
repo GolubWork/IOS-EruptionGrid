@@ -25,7 +25,7 @@ namespace Code.Meta.UI.HUD.LoadingWindow
         public void RotateImage(float speed)
         {
             _rotateTween = _rotateImage.transform
-                .DORotate(new Vector3(0, 0, 360f), speed, RotateMode.FastBeyond360)
+                .DORotate(new Vector3(0, 0, -360f), speed, RotateMode.FastBeyond360)
                 .SetEase(Ease.Linear)
                 .SetLoops(-1, LoopType.Incremental);
         }

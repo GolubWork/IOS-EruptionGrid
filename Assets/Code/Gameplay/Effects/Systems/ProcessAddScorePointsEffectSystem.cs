@@ -17,7 +17,7 @@ namespace Code.Gameplay.Effects.Systems
                 GameMatcher.TargetId
             ).NoneOf(GameMatcher.Processed));
 
-            _scorePointsStorages = meta.GetGroup(MetaMatcher.ScoreStorage);
+            _scorePointsStorages = meta.GetGroup(MetaMatcher.SessionScore);
         }
 
         public void Execute()

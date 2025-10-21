@@ -1,3 +1,4 @@
+using Code.Gameplay.GameOver.Systems;
 using Code.Gameplay.LifeTime.Systems;
 using Code.Infrastructure.Systems;
 
@@ -9,7 +10,8 @@ namespace Code.Gameplay.LifeTime
         {
            // Add(systems.Create<UpdateHealthBarSystem>());
             
-            Add(systems.Create<MarkDeadOnMaxHealthSystem>());
+            Add(systems.Create<MarkDeadOnZeroHealthSystem>());
+            Add(systems.Create<GameOverOnHeroDeathSystem>());
             
         }
     }

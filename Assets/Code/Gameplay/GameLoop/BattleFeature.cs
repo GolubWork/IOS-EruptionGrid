@@ -2,7 +2,6 @@ using Code.Audios.Audio;
 using Code.Common.Destruct;
 using Code.Gameplay.Backgrounds;
 using Code.Gameplay.Cameras;
-using Code.Gameplay.Cards;
 using Code.Gameplay.Collection;
 using Code.Gameplay.EffectApplication;
 using Code.Gameplay.Effects;
@@ -54,13 +53,14 @@ namespace Code.Gameplay.GameLoop
             Add(systems.Create<CameraFeature>());
             Add(systems.Create<MovementFeature>());
             Add(systems.Create<GridFeature>());
-            Add(systems.Create<CellFeature>());
+
             Add(systems.Create<ScoreFeature>());
             
             Add(systems.Create<GameOverOnZeroGameResourceSystem>());
             Add(systems.Create<AudioFeature>());
             Add(systems.Create<ProcessDestructedFeature>());
             Add(systems.Create<AchivmentFeature>());
+            Add(systems.Create<CellFeature>());
         }
 
 

@@ -16,8 +16,8 @@ namespace Code.Gameplay.Effects.Systems
             ));
 
             _storages = meta.GetGroup(MetaMatcher.AllOf(
-                MetaMatcher.GoldStorage,
-                MetaMatcher.CurrentGold
+                MetaMatcher.CurrencyStorage,
+                MetaMatcher.SessionCurrency
             ));
         }
 
@@ -26,7 +26,7 @@ namespace Code.Gameplay.Effects.Systems
             foreach (GameEntity effect in _effects.GetEntities(_buffer))
             foreach (MetaEntity storage in _storages)
             {
-                storage.ReplaceCurrentGold(storage.CurrentGold + effect.EffectValue);
+                storage.ReplaceSessionCurrency(storage.SessionCurrency + effect.EffectValue);
                 effect.isProcessed = true;
             }
         }

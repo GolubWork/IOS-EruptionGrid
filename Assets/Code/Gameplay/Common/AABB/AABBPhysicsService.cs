@@ -114,5 +114,48 @@ namespace Code.Gameplay.Common.AABB
             return position.x - size.x / 2 >= bottomLeft.x && position.x + size.x / 2 <= topRight.x &&
                    position.y - size.y / 2 >= bottomLeft.y && position.y + size.y / 2 <= topRight.y;
         }
+        
+        public bool IsBoxCollider2DColliding(GameEntity entityA, GameEntity entityB)
+        {
+            if (entityA.BoxCollider2D == null || entityB.BoxCollider2D == null)
+            {
+                CustomDebug.LogError("Both entities must have BoxCollider2D component to check collision.");
+                return false;
+            }
+
+            if (entityA.Transform == null || entityB.Transform == null)
+            {
+                CustomDebug.LogError("Both entities must have Transform to check collision.");
+                return false;
+            }
+
+            Vector2 firstCenter = GetColliderWorldCenter(entityA);
+            Vector2 firstSize = GetColliderWorldSize(entityA);
+
+            Vector2 secondCenter = GetColliderWorldCenter(entityB);
+            Vector2 secondSize = GetColliderWorldSize(entityB);
+
+            return IsAABBIntersecting(firstCenter, firstSize, secondCenter, secondSize);
+        }
+
+        private Vector2 GetColliderWorldCenter(GameEntity entity)
+        {
+            var box = entity.BoxCollider2D;
+            var transform = entity.Transform;
+
+            Vector2 scaledOffset = Vector2.Scale(box.offset, transform.lossyScale);
+            return (Vector2)transform.position + scaledOffset;
+        }
+
+        private Vector2 GetColliderWorldSize(GameEntity entity)
+        {
+            var box = entity.BoxCollider2D;
+            var transform = entity.Transform;
+
+            return new Vector2(
+                box.size.x * Mathf.Abs(transform.lossyScale.x),
+                box.size.y * Mathf.Abs(transform.lossyScale.y)
+            );
+        }
     }
 }

@@ -8,12 +8,12 @@ namespace Code.Gameplay.Movement
         public MovementFeature(ISystemFactory systems)
         {
             Add(systems.Create<DirectionalDeltaMoveSystem>());
-            Add(systems.Create<DirectionalDeltaMoveWithinCameraBoundsSystem>());
+            Add(systems.Create<ReturnOnInitialPositionSystem>());
+            Add(systems.Create<SwitchPlayerDirectionBySwipeSystem>());
+            Add(systems.Create<OneStepMovementSystem>());
             
             Add(systems.Create<TurnAlongDirectionSystem>());
             Add(systems.Create<RotateAlongDirectionSystem>());
-            Add(systems.Create<FullRotateAlongDirectionSystem>());
-            Add(systems.Create<RotateRandomDirectionSystem>());
             
             Add(systems.Create<UpdateTransformPositionSystem>());
 

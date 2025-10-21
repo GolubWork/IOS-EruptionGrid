@@ -14,6 +14,10 @@ namespace Code.Gameplay.Movement
     [Game] public class RotationRandomDirection : IComponent { }
     [Game] public class MoveInCameraBounds : IComponent { }
     [Game] public class MoveWithNoBounds : IComponent { }
+    [Game] public class OneStepMovement : IComponent { }
+    [Game] public class OneStepMovementBoundsX : IComponent {public Vector2Int Value; }
+    [Game] public class OneStepMovementBoundsY : IComponent {public Vector2Int Value; }
+    [Game] public class SwipeMovement : IComponent { }
     [Game] public class RotationSpeed : IComponent { public float Value; }
     
 

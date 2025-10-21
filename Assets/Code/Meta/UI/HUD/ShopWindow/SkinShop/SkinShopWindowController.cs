@@ -1,4 +1,5 @@
 ﻿using Code.Audios.Audio.Factory;
+using Code.Common.Helpers;
 using Code.Gameplay.StaticData.SkinStaticData;
 using Code.Infrastructure.DependencyInjection;
 using Code.Meta.Shop.Factories;
@@ -50,7 +51,7 @@ namespace Code.Meta.UI.HUD.ShopWindow.SkinShop
             _shopProvider.SetController(this);
             
             itemBar = Instantiate(skinItemPrefab, itemContainer);
-            itemBar.Init(_shopFactory, _skinDataProvider);
+            itemBar.Init(_shopFactory, _skinDataProvider, _audioFactory);
             _model = new SkinShopWindowModel(_staticWindowService, _updatableWindowService, _audioFactory, itemBar);
             _model.InitShop();
             
@@ -82,6 +83,7 @@ namespace Code.Meta.UI.HUD.ShopWindow.SkinShop
 
         private void OnLeft()
         {
+            CustomDebug.Log("Left");
             _model.OnButtonleft(out (bool last, bool first) isFirstOrLast);
             btnRight.gameObject.SetActive(!isFirstOrLast.first);
             btnLeft.gameObject.SetActive(!isFirstOrLast.last);

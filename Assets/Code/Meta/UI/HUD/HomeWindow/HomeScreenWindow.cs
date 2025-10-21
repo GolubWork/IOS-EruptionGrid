@@ -4,6 +4,7 @@ using Code.Common.Helpers;
 using Code.Infrastructure.DependencyInjection;
 using Code.Infrastructure.States.StateMachine;
 using Code.Meta.Levels.Configs;
+using Code.Meta.UI.HUD.LoadingWindow;
 using Code.Windows.StaticWindows;
 using UnityEngine;
 using UnityEngine.Events;
@@ -30,18 +31,21 @@ namespace Code.Meta.UI.HUD.HomeWindow
         private MetaContext _metaContext;
         
         private UnityAction _onStartGame, _onLevels, _onSettings, _onPrivacy, _onLeaderboard, _onShop, _onAch;
+        private LoadingController _loadingWindow;
 
         [Inject]
         private void Construct(MetaContext metaContext,         
             IGameStateMachine gameStateMachine, 
             IAudioFactory audioFactory,
-            IStaticWindowService staticWindowService)
+            IStaticWindowService staticWindowService,
+            LoadingController loadingWindow)
         {
             Id = StaticWindowId.HomeWindow;
             _metaContext = metaContext;
             _stateMachine = gameStateMachine;
             _audioFactory = audioFactory;
             _staticWindowService = staticWindowService;
+            _loadingWindow = loadingWindow;
         }
         
         protected override void Initialize()
@@ -118,6 +122,7 @@ namespace Code.Meta.UI.HUD.HomeWindow
         
         private void OnBtnStartGame()
         {
+            _loadingWindow.Show();
             btnStartGame.interactable = false;
             _homeModel.EnterBattleLoadingState();
         }

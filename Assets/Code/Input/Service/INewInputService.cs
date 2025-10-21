@@ -8,6 +8,8 @@ namespace Code.Input.Service
         public void Init(BaseActions playerInput = null, InputAction moveAction = null, InputAction clickAction = null);
         Camera CameraMain { get; }
         public bool InputAvaliable { get; set; }
+        bool SwipeDetected();
+        Vector3 SwipeDirection();
 
         /// <summary>
         /// Возвращает позицию первого активного тача на экране
@@ -33,5 +35,7 @@ namespace Code.Input.Service
         /// Проверка, отпущен ли тач
         /// </summary>
         public bool GetLeftMouseButtonUp();
+
+        void UpdateSwipe();
     }
 }

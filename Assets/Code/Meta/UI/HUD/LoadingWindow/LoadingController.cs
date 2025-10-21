@@ -1,5 +1,6 @@
 using Code.Infrastructure.AssetManagement;
 using Code.Infrastructure.DependencyInjection;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,6 +11,7 @@ namespace Code.Meta.UI.HUD.LoadingWindow
         [SerializeField] private Canvas canvas;
         [SerializeField] private Image progressImage;
         [SerializeField] private Image rotateImage;
+        [SerializeField] private CanvasGroup canvasGroup;
         
         private LoadingWindowView _view;
         private IAssetDownloadReporter _downloadReporter;
@@ -47,7 +49,12 @@ namespace Code.Meta.UI.HUD.LoadingWindow
 
         public void Hide()
         {
-            if (canvas != null) canvas.enabled = false;
+            if (canvasGroup == null || canvas == null) return;
+            canvasGroup.DOFade(0f, 0.5f).OnComplete(() =>
+            {
+                canvas.enabled = false;
+                canvasGroup.alpha = 1;
+            });
         }
         
         private void OnDestroy()

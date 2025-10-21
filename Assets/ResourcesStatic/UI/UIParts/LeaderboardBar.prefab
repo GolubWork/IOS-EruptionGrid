@@ -67,7 +67,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: NAME
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: a21f888a1a149e4499d8ce803faf1cec, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: 4293933141545845846, guid: a21f888a1a149e4499d8ce803faf1cec, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -108,17 +108,15 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_TextWrappingMode: 0
+  m_enableWordWrapping: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
-  m_EmojiFallbackSupport: 1
   m_parseCtrlCharacters: 1
   m_isOrthographic: 1
   m_isCullingEnabled: 0
@@ -203,7 +201,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: POSITION
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: a21f888a1a149e4499d8ce803faf1cec, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: 4293933141545845846, guid: a21f888a1a149e4499d8ce803faf1cec, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -244,17 +242,15 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_TextWrappingMode: 0
+  m_enableWordWrapping: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
-  m_EmojiFallbackSupport: 1
   m_parseCtrlCharacters: 1
   m_isOrthographic: 1
   m_isCullingEnabled: 0
@@ -327,16 +323,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.23921569, g: 0.7607843, b: 0.30588236, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d9f96fc16e86d401bb88cae0fa117ed5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fa3022195542948668112ae21487fdd1, type: 3}
   m_Type: 1
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -460,7 +456,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: SCORE
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: a21f888a1a149e4499d8ce803faf1cec, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: 4293933141545845846, guid: a21f888a1a149e4499d8ce803faf1cec, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -501,17 +497,15 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_TextWrappingMode: 0
+  m_enableWordWrapping: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
-  m_EmojiFallbackSupport: 1
   m_parseCtrlCharacters: 1
   m_isOrthographic: 1
   m_isCullingEnabled: 0

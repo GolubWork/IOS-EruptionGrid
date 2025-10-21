@@ -8,6 +8,8 @@ namespace Code.Audios.Audio
         Lose = 3,
         Impact = 4,
         Collect = 5,
-        Collider = 6
+        Collider = 6,
+        Collider2 = 7,
+        Swipe = 8,
     }
 }

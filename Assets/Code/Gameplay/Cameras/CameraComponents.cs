@@ -7,5 +7,6 @@ namespace Code.Gameplay.Cameras
     [Game] public class BorderCamera : IComponent { }
     [Game] public class MainCamera : IComponent { }
     [Game] public class EdgeCollider2DComponent : IComponent { public EdgeCollider2D Value; }
+    [Game] public class CameraFollowTargetId : IComponent { public int Value; }
     
-}
+} 

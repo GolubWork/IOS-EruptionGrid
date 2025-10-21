@@ -49,6 +49,14 @@ namespace Code.Infrastructure.AssetManagement.Constants
         public const string ZonePrefabPath = "Gameplay/Zones/Zone.prefab";
         
         public const string ConveuourBelt = "Gameplay/Conveyour.prefab";
+        
+        public const string PlayerPrefabPath = "Gameplay/Player/Player.prefab";
+        public const string TreeObstacle = "Gameplay/Obstacles/TreeObstacle.prefab";
+        public const string GrassEnviroment = "Gameplay/Enviroment/Grass.prefab";
+        public const string RoadEnviroment = "Gameplay/Enviroment/Road.prefab";
+        public const string CarObstacle = "Gameplay/Obstacles/CarObstacle.prefab";
+        public const string CurrencyObstacle = "Gameplay/Obstacles/CurrencyObstacle.prefab";
+        
     }
 
     public class DownloadServiceConstants

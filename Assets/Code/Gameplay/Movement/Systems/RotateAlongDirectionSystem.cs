@@ -23,7 +23,7 @@ namespace Code.Gameplay.Movement.Systems
                 if (rotator.Direction.sqrMagnitude >= 0.01f)
                 {
                     float turnAngle = Mathf.Atan2(rotator.Direction.y, rotator.Direction.x) * Mathf.Rad2Deg;
-                    rotator.Transform.rotation = Quaternion.Euler(0, 0, turnAngle);
+                    rotator.Transform.rotation = Quaternion.Euler(0, turnAngle, 0);
                 }
             }
         }

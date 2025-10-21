@@ -43,176 +43,191 @@ public static class GameComponentsLookup {
     public const int RecievingItemsTypeId = 32;
     public const int BorderCamera = 33;
     public const int Camera = 34;
-    public const int EdgeCollider2D = 35;
-    public const int MainCamera = 36;
-    public const int Card = 37;
-    public const int CardBackisActive = 38;
-    public const int CardSpriteRenderer = 39;
-    public const int CardTypeId = 40;
-    public const int FaceUp = 41;
-    public const int Flipping = 42;
-    public const int ReadyToCheck = 43;
-    public const int RequireSpriteSet = 44;
-    public const int ReturningCard = 45;
-    public const int BaseStats = 46;
-    public const int StatChange = 47;
-    public const int StatModifiers = 48;
-    public const int Chicken = 49;
-    public const int Collectable = 50;
-    public const int Collected = 51;
-    public const int CollectEffect = 52;
-    public const int Active = 53;
-    public const int Damage = 54;
-    public const int EntityLink = 55;
-    public const int Id = 56;
-    public const int Inactive = 57;
-    public const int Initialized = 58;
-    public const int MeshRenderer = 59;
-    public const int SpriteRenderer = 60;
-    public const int Transform = 61;
-    public const int WorldPosition = 62;
-    public const int ConveyorBelt = 63;
-    public const int ConveyorBeltSpeed = 64;
-    public const int ConveyourItemsIds = 65;
-    public const int LineRenderer = 66;
-    public const int LinkedBeltId = 67;
-    public const int Cooldown = 68;
-    public const int CooldownLeft = 69;
-    public const int CooldownUp = 70;
-    public const int AddCurrencyEffect = 71;
-    public const int AddPointsEffect = 72;
-    public const int DamageEffect = 73;
-    public const int DamageReflection = 74;
-    public const int Effect = 75;
-    public const int EffectSetup = 76;
-    public const int EffectValue = 77;
-    public const int HealEffect = 78;
-    public const int ProducerId = 79;
-    public const int TapEffect = 80;
-    public const int TargetId = 81;
-    public const int VerticalForceEffect = 82;
-    public const int CollectEggVisualEffect = 83;
-    public const int ProcessedVisualEffect = 84;
-    public const int TapVisualEffect = 85;
-    public const int VisualEffect = 86;
-    public const int VisualEffectConfig = 87;
-    public const int VisualEffectEffectValue = 88;
-    public const int VisualEffectProducerId = 89;
-    public const int VisualEffectTargetId = 90;
-    public const int Egg = 91;
-    public const int EggCurrentSpawnTime = 92;
-    public const int EggLifeTime = 93;
-    public const int EggMaxSpawnTime = 94;
-    public const int EggSpawnActive = 95;
-    public const int EnchantTypeId = 96;
-    public const int ExplosiveEnchant = 97;
-    public const int GameResource = 98;
-    public const int ResourceValue = 99;
-    public const int FollowMouseX = 100;
-    public const int FollowMouseXY = 101;
-    public const int FollowMouseY = 102;
-    public const int Grabable = 103;
-    public const int Grabed = 104;
-    public const int Placed = 105;
-    public const int ActiveCell = 106;
-    public const int ActiveCellProcessed = 107;
-    public const int CellFiller = 108;
-    public const int CellGridCoordinates = 109;
-    public const int GridCell = 110;
-    public const int InteractableCell = 111;
-    public const int LinkedCellId = 112;
-    public const int PlayerCell = 113;
-    public const int ReferenceCell = 114;
-    public const int Grid = 115;
-    public const int GridRows = 116;
-    public const int LinkedGridId = 117;
-    public const int PlayerGrid = 118;
-    public const int PlayerGridBuildRequest = 119;
-    public const int ReferenceGrid = 120;
-    public const int ReferenceGridBuildRequest = 121;
-    public const int Item = 122;
-    public const int ItemTypeId = 123;
-    public const int CurrentTimer = 124;
-    public const int LevelTimer = 125;
-    public const int MaxTimer = 126;
-    public const int TimerCompleted = 127;
-    public const int CurrentHP = 128;
-    public const int Dead = 129;
-    public const int HealthBar = 130;
-    public const int MaxHP = 131;
-    public const int ProcessingDeath = 132;
-    public const int Direction = 133;
-    public const int FullRotationAlignedAlongDirection = 134;
-    public const int MovableByInput = 135;
-    public const int MoveInCameraBounds = 136;
-    public const int MovementAvailable = 137;
-    public const int MoveWithNoBounds = 138;
-    public const int Moving = 139;
-    public const int RotationAlignedAlongDirection = 140;
-    public const int RotationRandomDirection = 141;
-    public const int RotationSpeed = 142;
-    public const int Speed = 143;
-    public const int TurnedAlongDirection = 144;
-    public const int ObjectFromPool = 145;
-    public const int Reserved = 146;
-    public const int BoxCollider2D = 147;
-    public const int BoxCollider = 148;
-    public const int ForceApplier = 149;
-    public const int ForceProducerId = 150;
-    public const int ForceTargetId = 151;
-    public const int PhysicsBody = 152;
-    public const int PhysicsForce = 153;
-    public const int Processed = 154;
-    public const int Rigidbody2D = 155;
-    public const int Velocity = 156;
-    public const int CurrenScoreContainer = 157;
-    public const int MaxScoreContainer = 158;
-    public const int ScoreContains = 159;
-    public const int OnShelf = 160;
-    public const int Shelf = 161;
-    public const int Affected = 162;
-    public const int Applied = 163;
-    public const int ApplierStatusLink = 164;
-    public const int Duration = 165;
-    public const int Explosive = 166;
-    public const int Freeze = 167;
-    public const int Period = 168;
-    public const int Poison = 169;
-    public const int Status = 170;
-    public const int StatusTypeId = 171;
-    public const int TimeLeft = 172;
-    public const int TimeSinceLastTick = 173;
-    public const int Unapplied = 174;
-    public const int Tapable = 175;
-    public const int TapDepleted = 176;
-    public const int Taped = 177;
-    public const int TapEffectConfig = 178;
-    public const int TapRapeatableTimes = 179;
-    public const int TapsRequired = 180;
-    public const int TapVisualEffectConfig = 181;
-    public const int TotalTapsRequired = 182;
-    public const int CollectingTargetsContinuously = 183;
-    public const int CollectTargetsInterval = 184;
-    public const int CollectTargetsTimer = 185;
-    public const int LayerMask = 186;
-    public const int ProcessedTargets = 187;
-    public const int Radius = 188;
-    public const int Reached = 189;
-    public const int ReadyToCollectTargets = 190;
-    public const int TargetsBuffer = 191;
-    public const int Zone = 192;
-    public const int ZoneHeight = 193;
-    public const int ZonePercent = 194;
-    public const int ZonePlaced = 195;
-    public const int ZoneTypeId = 196;
-    public const int ZoneWidth = 197;
-    public const int View = 198;
-    public const int ViewPrefab = 199;
-    public const int ViewPath = 200;
-    public const int ViewProcessed = 201;
-    public const int RequireSkinApplication = 202;
+    public const int CameraFollowTargetId = 35;
+    public const int EdgeCollider2D = 36;
+    public const int MainCamera = 37;
+    public const int Card = 38;
+    public const int CardBackisActive = 39;
+    public const int CardSpriteRenderer = 40;
+    public const int CardTypeId = 41;
+    public const int FaceUp = 42;
+    public const int Flipping = 43;
+    public const int ReadyToCheck = 44;
+    public const int RequireSpriteSet = 45;
+    public const int ReturningCard = 46;
+    public const int BaseStats = 47;
+    public const int StatChange = 48;
+    public const int StatModifiers = 49;
+    public const int Chicken = 50;
+    public const int Collectable = 51;
+    public const int Collected = 52;
+    public const int CollectEffect = 53;
+    public const int Active = 54;
+    public const int Damage = 55;
+    public const int EntityLink = 56;
+    public const int Id = 57;
+    public const int Inactive = 58;
+    public const int Initialized = 59;
+    public const int MeshRenderer = 60;
+    public const int SpriteRenderer = 61;
+    public const int Transform = 62;
+    public const int WorldPosition = 63;
+    public const int ConveyorBelt = 64;
+    public const int ConveyorBeltSpeed = 65;
+    public const int ConveyourItemsIds = 66;
+    public const int LineRenderer = 67;
+    public const int LinkedBeltId = 68;
+    public const int Cooldown = 69;
+    public const int CooldownLeft = 70;
+    public const int CooldownUp = 71;
+    public const int AddCurrencyEffect = 72;
+    public const int AddPointsEffect = 73;
+    public const int DamageEffect = 74;
+    public const int DamageReflection = 75;
+    public const int Effect = 76;
+    public const int EffectSetup = 77;
+    public const int EffectValue = 78;
+    public const int HealEffect = 79;
+    public const int ProducerId = 80;
+    public const int TapEffect = 81;
+    public const int TargetId = 82;
+    public const int VerticalForceEffect = 83;
+    public const int CollectEggVisualEffect = 84;
+    public const int ProcessedVisualEffect = 85;
+    public const int TapVisualEffect = 86;
+    public const int VisualEffect = 87;
+    public const int VisualEffectConfig = 88;
+    public const int VisualEffectEffectValue = 89;
+    public const int VisualEffectProducerId = 90;
+    public const int VisualEffectTargetId = 91;
+    public const int Egg = 92;
+    public const int EggCurrentSpawnTime = 93;
+    public const int EggLifeTime = 94;
+    public const int EggMaxSpawnTime = 95;
+    public const int EggSpawnActive = 96;
+    public const int EnchantTypeId = 97;
+    public const int ExplosiveEnchant = 98;
+    public const int ObstacleLocations = 99;
+    public const int ObstacleLocationsInitialized = 100;
+    public const int GameResource = 101;
+    public const int ResourceValue = 102;
+    public const int FollowMouseX = 103;
+    public const int FollowMouseXY = 104;
+    public const int FollowMouseY = 105;
+    public const int Grabable = 106;
+    public const int Grabed = 107;
+    public const int Placed = 108;
+    public const int ActiveCell = 109;
+    public const int ActiveCellProcessed = 110;
+    public const int CellFiller = 111;
+    public const int CellGridCoordinates = 112;
+    public const int GridCell = 113;
+    public const int GridInitialized = 114;
+    public const int InteractableCell = 115;
+    public const int LinkedCellId = 116;
+    public const int PlayerCell = 117;
+    public const int ReferenceCell = 118;
+    public const int TargetCellSize = 119;
+    public const int Grid = 120;
+    public const int GridRows = 121;
+    public const int LinkedGridId = 122;
+    public const int PlayerGrid = 123;
+    public const int PlayerGridBuildRequest = 124;
+    public const int ReferenceGrid = 125;
+    public const int ReferenceGridBuildRequest = 126;
+    public const int Item = 127;
+    public const int ItemTypeId = 128;
+    public const int CurrentTimer = 129;
+    public const int LevelTimer = 130;
+    public const int MaxTimer = 131;
+    public const int TimerCompleted = 132;
+    public const int CurrentHP = 133;
+    public const int Dead = 134;
+    public const int HealthBar = 135;
+    public const int MaxHP = 136;
+    public const int ProcessingDeath = 137;
+    public const int Direction = 138;
+    public const int FullRotationAlignedAlongDirection = 139;
+    public const int MovableByInput = 140;
+    public const int MoveInCameraBounds = 141;
+    public const int MovementAvailable = 142;
+    public const int MoveWithNoBounds = 143;
+    public const int Moving = 144;
+    public const int OneStepMovement = 145;
+    public const int OneStepMovementBoundsX = 146;
+    public const int OneStepMovementBoundsY = 147;
+    public const int RotationAlignedAlongDirection = 148;
+    public const int RotationRandomDirection = 149;
+    public const int RotationSpeed = 150;
+    public const int Speed = 151;
+    public const int SwipeMovement = 152;
+    public const int TurnedAlongDirection = 153;
+    public const int ObjectFromPool = 154;
+    public const int Reserved = 155;
+    public const int CarObstacle = 156;
+    public const int CurrencyObstacle = 157;
+    public const int InitialeWorldPosition = 158;
+    public const int ObstacleTypeId = 159;
+    public const int TreeObstacle = 160;
+    public const int BoxCollider2D = 161;
+    public const int BoxCollider = 162;
+    public const int ForceApplier = 163;
+    public const int ForceProducerId = 164;
+    public const int ForceTargetId = 165;
+    public const int PhysicsBody = 166;
+    public const int PhysicsForce = 167;
+    public const int Processed = 168;
+    public const int Rigidbody2D = 169;
+    public const int Velocity = 170;
+    public const int Player = 171;
+    public const int CurrenScoreContainer = 172;
+    public const int MaxScoreContainer = 173;
+    public const int ScoreContains = 174;
+    public const int OnShelf = 175;
+    public const int Shelf = 176;
+    public const int Affected = 177;
+    public const int Applied = 178;
+    public const int ApplierStatusLink = 179;
+    public const int Duration = 180;
+    public const int Explosive = 181;
+    public const int Freeze = 182;
+    public const int Period = 183;
+    public const int Poison = 184;
+    public const int Status = 185;
+    public const int StatusTypeId = 186;
+    public const int TimeLeft = 187;
+    public const int TimeSinceLastTick = 188;
+    public const int Unapplied = 189;
+    public const int Tapable = 190;
+    public const int TapDepleted = 191;
+    public const int Taped = 192;
+    public const int TapEffectConfig = 193;
+    public const int TapRapeatableTimes = 194;
+    public const int TapsRequired = 195;
+    public const int TapVisualEffectConfig = 196;
+    public const int TotalTapsRequired = 197;
+    public const int CollectingTargetsContinuously = 198;
+    public const int CollectTargetsInterval = 199;
+    public const int CollectTargetsTimer = 200;
+    public const int LayerMask = 201;
+    public const int ProcessedTargets = 202;
+    public const int Radius = 203;
+    public const int Reached = 204;
+    public const int ReadyToCollectTargets = 205;
+    public const int TargetsBuffer = 206;
+    public const int Zone = 207;
+    public const int ZoneHeight = 208;
+    public const int ZonePercent = 209;
+    public const int ZonePlaced = 210;
+    public const int ZoneTypeId = 211;
+    public const int ZoneWidth = 212;
+    public const int View = 213;
+    public const int ViewPrefab = 214;
+    public const int ViewPath = 215;
+    public const int ViewProcessed = 216;
+    public const int RequireSkinApplication = 217;
 
-    public const int TotalComponents = 203;
+    public const int TotalComponents = 218;
 
     public static readonly string[] componentNames = {
         "Destructed",
@@ -250,6 +265,7 @@ public static class GameComponentsLookup {
         "RecievingItemsTypeId",
         "BorderCamera",
         "Camera",
+        "CameraFollowTargetId",
         "EdgeCollider2D",
         "MainCamera",
         "Card",
@@ -313,6 +329,8 @@ public static class GameComponentsLookup {
         "EggSpawnActive",
         "EnchantTypeId",
         "ExplosiveEnchant",
+        "ObstacleLocations",
+        "ObstacleLocationsInitialized",
         "GameResource",
         "ResourceValue",
         "FollowMouseX",
@@ -326,10 +344,12 @@ public static class GameComponentsLookup {
         "CellFiller",
         "CellGridCoordinates",
         "GridCell",
+        "GridInitialized",
         "InteractableCell",
         "LinkedCellId",
         "PlayerCell",
         "ReferenceCell",
+        "TargetCellSize",
         "Grid",
         "GridRows",
         "LinkedGridId",
@@ -355,13 +375,22 @@ public static class GameComponentsLookup {
         "MovementAvailable",
         "MoveWithNoBounds",
         "Moving",
+        "OneStepMovement",
+        "OneStepMovementBoundsX",
+        "OneStepMovementBoundsY",
         "RotationAlignedAlongDirection",
         "RotationRandomDirection",
         "RotationSpeed",
         "Speed",
+        "SwipeMovement",
         "TurnedAlongDirection",
         "ObjectFromPool",
         "Reserved",
+        "CarObstacle",
+        "CurrencyObstacle",
+        "InitialeWorldPosition",
+        "ObstacleTypeId",
+        "TreeObstacle",
         "BoxCollider2D",
         "BoxCollider",
         "ForceApplier",
@@ -372,6 +401,7 @@ public static class GameComponentsLookup {
         "Processed",
         "Rigidbody2D",
         "Velocity",
+        "Player",
         "CurrenScoreContainer",
         "MaxScoreContainer",
         "ScoreContains",
@@ -456,6 +486,7 @@ public static class GameComponentsLookup {
         typeof(Code.Gameplay.Buildings.RecievingItemsTypeId),
         typeof(Code.Gameplay.Cameras.BorderCamera),
         typeof(Code.Gameplay.Cameras.CameraComponent),
+        typeof(Code.Gameplay.Cameras.CameraFollowTargetId),
         typeof(Code.Gameplay.Cameras.EdgeCollider2DComponent),
         typeof(Code.Gameplay.Cameras.MainCamera),
         typeof(Code.Gameplay.Cards.Card),
@@ -519,6 +550,8 @@ public static class GameComponentsLookup {
         typeof(Code.Gameplay.Eggs.EggSpawnActive),
         typeof(Code.Gameplay.Enchants.EnchantTypeIdComponent),
         typeof(Code.Gameplay.Enchants.ExplosiveEnchant),
+        typeof(Code.Gameplay.Enviroment.ObstacleLocations),
+        typeof(Code.Gameplay.Enviroment.ObstacleLocationsInitialized),
         typeof(Code.Gameplay.GameResource.GameResource),
         typeof(Code.Gameplay.GameResource.ResourceValue),
         typeof(Code.Gameplay.Grabs.FollowMouseX),
@@ -532,10 +565,12 @@ public static class GameComponentsLookup {
         typeof(Code.Gameplay.GridCells.CellFiller),
         typeof(Code.Gameplay.GridCells.CellGridCoordinates),
         typeof(Code.Gameplay.GridCells.GridCell),
+        typeof(Code.Gameplay.GridCells.GridInitialized),
         typeof(Code.Gameplay.GridCells.InteractableCell),
         typeof(Code.Gameplay.GridCells.LinkedCellId),
         typeof(Code.Gameplay.GridCells.PlayerCell),
         typeof(Code.Gameplay.GridCells.ReferenceCell),
+        typeof(Code.Gameplay.GridCells.TargetCellSize),
         typeof(Code.Gameplay.Grids.Grid),
         typeof(Code.Gameplay.Grids.GridRowsComponent),
         typeof(Code.Gameplay.Grids.LinkedGridId),
@@ -561,13 +596,22 @@ public static class GameComponentsLookup {
         typeof(Code.Gameplay.Movement.MovementAvailable),
         typeof(Code.Gameplay.Movement.MoveWithNoBounds),
         typeof(Code.Gameplay.Movement.Moving),
+        typeof(Code.Gameplay.Movement.OneStepMovement),
+        typeof(Code.Gameplay.Movement.OneStepMovementBoundsX),
+        typeof(Code.Gameplay.Movement.OneStepMovementBoundsY),
         typeof(Code.Gameplay.Movement.RotationAlignedAlongDirection),
         typeof(Code.Gameplay.Movement.RotationRandomDirection),
         typeof(Code.Gameplay.Movement.RotationSpeed),
         typeof(Code.Gameplay.Movement.Speed),
+        typeof(Code.Gameplay.Movement.SwipeMovement),
         typeof(Code.Gameplay.Movement.TurnedAlongDirection),
         typeof(Code.Gameplay.Objects.ObjectFromPool),
         typeof(Code.Gameplay.Objects.Reserved),
+        typeof(Code.Gameplay.Obstacles.CarObstacle),
+        typeof(Code.Gameplay.Obstacles.CurrencyObstacle),
+        typeof(Code.Gameplay.Obstacles.InitialeWorldPosition),
+        typeof(Code.Gameplay.Obstacles.ObstacleTypeIdComponent),
+        typeof(Code.Gameplay.Obstacles.TreeObstacle),
         typeof(Code.Gameplay.Physics.BoxCollider2DComponent),
         typeof(Code.Gameplay.Physics.BoxColliderComponent),
         typeof(Code.Gameplay.Physics.ForceApplier),
@@ -578,6 +622,7 @@ public static class GameComponentsLookup {
         typeof(Code.Gameplay.Physics.Processed),
         typeof(Code.Gameplay.Physics.Rigidbody2DComponent),
         typeof(Code.Gameplay.Physics.Velocity),
+        typeof(Code.Gameplay.Player.Player),
         typeof(Code.Gameplay.Score.CurrenScoreContainer),
         typeof(Code.Gameplay.Score.MaxScoreContainer),
         typeof(Code.Gameplay.Score.ScoreContains),

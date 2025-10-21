@@ -19,6 +19,7 @@ using Code.Gameplay.ConveyorBelt.Factories;
 using Code.Gameplay.Effects.Factory;
 using Code.Gameplay.EffectsVisual.Factories;
 using Code.Gameplay.Eggs.Factories;
+using Code.Gameplay.Enviroment.Factories;
 using Code.Gameplay.Floors.Factories;
 using Code.Gameplay.GameLoop;
 using Code.Gameplay.GameResource.Factories;
@@ -28,7 +29,9 @@ using Code.Gameplay.Items.Factories;
 using Code.Gameplay.Levels;
 using Code.Gameplay.LevelTimer.Factories;
 using Code.Gameplay.Objects.Factories;
+using Code.Gameplay.Obstacles.Factoreis;
 using Code.Gameplay.Physics.Factories;
+using Code.Gameplay.Player.Factories;
 using Code.Gameplay.Shelfs.Factories;
 using Code.Gameplay.StaticData.AbilityStaticData;
 using Code.Gameplay.StaticData.AdditionalSpriteProvider;
@@ -236,6 +239,11 @@ namespace Code.Infrastructure.Installers
             
             Container.Bind<IGridFactory>().To<GridFactory>().AsSingle();
             Container.Bind<ICellFactory>().To<CellFactory>().AsSingle();
+            
+            Container.Bind<IPlayerFactory>().To<PlayerFactory>().AsSingle();
+            
+            Container.Bind<IEnviromentFactory>().To<EnviromentFactory>().AsSingle();
+            Container.Bind<IObstacleFactory>().To<ObstacleFactory>().AsSingle();
         }
 
 

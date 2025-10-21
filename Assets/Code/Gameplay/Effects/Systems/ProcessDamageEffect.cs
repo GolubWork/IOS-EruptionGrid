@@ -16,7 +16,6 @@ namespace Code.Gameplay.Effects.Systems
             ));
             
             _heroes = game.GetGroup(GameMatcher.AllOf(
-                GameMatcher.Chicken,
                 GameMatcher.CurrentHP,
                 GameMatcher.MaxHP
             ));

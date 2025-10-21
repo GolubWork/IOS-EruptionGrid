@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: ConfigsGroup
   m_EditorClassIdentifier: 
   m_GroupName: ConfigsGroup
+  m_Data:
+    m_SerializedData: []
   m_GUID: d34dd9246043a8946b0c2fcee68edff6
   m_SerializeEntries:
   - m_GUID: ef0eee931687129438fb386c4982442f

@@ -37,6 +37,12 @@ namespace Code.Gameplay.GridCells.Factories
         public GameEntity CreateGridCell(Vector3 at)
         {
             GameEntity cell = _defaultObjectPool.ReserveDefaultObject();
+            
+            if (cell.hasTransform)
+            {
+                cell.Transform.localScale = Vector3.one;
+            }
+            
             cell.ReplaceWorldPosition(at)
                 .With(e => e.isGridCell = true)
                 ;
@@ -46,6 +52,12 @@ namespace Code.Gameplay.GridCells.Factories
         public GameEntity CreateCellFill(Vector3 at, int cellId)
         {
             GameEntity filler = _defaultObjectPool.ReserveDefaultObject();
+            
+            if (filler.hasTransform)
+            {
+                filler.Transform.localScale = Vector3.one;
+            }
+            
             filler.ReplaceWorldPosition(at)
                 .AddLinkedCellId(cellId)
                 .With(e => e.isCellFiller = true)
@@ -58,6 +70,12 @@ namespace Code.Gameplay.GridCells.Factories
         public GameEntity CreateMirrorGridCell(Vector3 vector3)
         {
             GameEntity cell = _defaultObjectPool.ReserveDefaultObject();
+            
+            if (cell.hasTransform)
+            {
+                cell.Transform.localScale = Vector3.one;
+            }
+            
             cell.ReplaceWorldPosition(vector3)
                 .With(e => e.isGridCell = true)
                 

@@ -4,9 +4,19 @@ using UnityEngine.InputSystem;
 
 namespace Code.Input.Service
 {
-    public class NewInputService :INewInputService
+    public class NewInputService : INewInputService
     {
         private Camera _mainCamera;
+
+        private Vector2 _swipeStartPos;
+        private Vector2 _swipeEndPos;
+        private bool _isSwiping;
+        private bool _swipeDetected;
+        private Vector3 _swipeDirection;
+
+        private const float SwipeThreshold = 50f;
+        
+        public bool InputAvaliable { get; set; } = true;
 
         public void Init(BaseActions playerInput = null, InputAction moveAction = null, InputAction clickAction = null)
         {
@@ -23,9 +33,11 @@ namespace Code.Input.Service
             }
         }
 
-        /// <summary>
-        /// Возвращает позицию первого активного тача на экране
-        /// </summary>
+        // ======== TOUCH HELPERS ========
+
+        bool INewInputService.SwipeDetected() => _swipeDetected;
+        Vector3 INewInputService.SwipeDirection() => _swipeDirection;
+
         public Vector2 GetScreenTouchPosition()
         {
             if (Touchscreen.current == null || Touchscreen.current.touches.Count == 0)
@@ -34,9 +46,6 @@ namespace Code.Input.Service
             return Touchscreen.current.touches[0].position.ReadValue();
         }
 
-        /// <summary>
-        /// Возвращает позицию тача в мировых координатах
-        /// </summary>
         public Vector3 GetWorldTouchPosition()
         {
             if (CameraMain == null)
@@ -46,9 +55,6 @@ namespace Code.Input.Service
             return CameraMain.ScreenToWorldPoint(new Vector3(screenPos.x, screenPos.y, CameraMain.nearClipPlane));
         }
 
-        /// <summary>
-        /// Проверка, был ли тач на этом кадре
-        /// </summary>
         public bool GetTouchDown()
         {
             if (Touchscreen.current == null)
@@ -60,21 +66,14 @@ namespace Code.Input.Service
                 {
                     int touchId = touch.touchId.ReadValue();
                     bool isOverUI = EventSystem.current != null && EventSystem.current.IsPointerOverGameObject(touchId);
-
                     if (!isOverUI)
-                    {
-                        Debug.Log($"[Input] Touch detected, touchId={touchId}");
                         return true;
-                    }
                 }
             }
 
             return false;
         }
 
-        /// <summary>
-        /// Проверка, удерживается ли тач
-        /// </summary>
         public bool GetLeftMouseButton()
         {
             if (Touchscreen.current == null)
@@ -84,7 +83,6 @@ namespace Code.Input.Service
             {
                 int touchId = touch.touchId.ReadValue();
                 bool isOverUI = EventSystem.current != null && EventSystem.current.IsPointerOverGameObject(touchId);
-
                 if (touch.press.isPressed && !isOverUI)
                     return true;
             }
@@ -92,9 +90,6 @@ namespace Code.Input.Service
             return false;
         }
 
-        /// <summary>
-        /// Проверка, отпущен ли тач
-        /// </summary>
         public bool GetLeftMouseButtonUp()
         {
             if (Touchscreen.current == null)
@@ -104,7 +99,6 @@ namespace Code.Input.Service
             {
                 int touchId = touch.touchId.ReadValue();
                 bool isOverUI = EventSystem.current != null && EventSystem.current.IsPointerOverGameObject(touchId);
-
                 if (touch.press.wasReleasedThisFrame && !isOverUI)
                     return true;
             }
@@ -112,6 +106,45 @@ namespace Code.Input.Service
             return false;
         }
 
-        public bool InputAvaliable { get; set; } = true;
+        // ======== SWIPE LOGIC ========
+
+        public void UpdateSwipe()
+        {
+            _swipeDetected = false;
+
+            // начало свайпа
+            if (GetTouchDown())
+            {
+                _swipeStartPos = GetScreenTouchPosition();
+                _isSwiping = true;
+            }
+
+            // конец свайпа
+            if (_isSwiping && GetLeftMouseButtonUp())
+            {
+                _isSwiping = false;
+                _swipeEndPos = GetScreenTouchPosition();
+
+                Vector2 delta = _swipeEndPos - _swipeStartPos;
+
+                if (delta.magnitude < SwipeThreshold)
+                    return;
+
+                _swipeDirection = CalculateSwipeDirection(delta);
+                _swipeDetected = true;
+            }
+        }
+
+        private Vector3 CalculateSwipeDirection(Vector2 delta)
+        {
+            if (Mathf.Abs(delta.x) > Mathf.Abs(delta.y))
+            {
+                return delta.x > 0 ? Vector3.right : Vector3.left;
+            }
+            else
+            {
+                return delta.y > 0 ? Vector3.up : Vector3.down;
+            }
+        }
     }
 }

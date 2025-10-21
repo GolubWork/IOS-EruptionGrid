@@ -1,12 +1,11 @@
 using System;
-using System.Linq;
-using System.Text;
+using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using Code.Audios.Audio;
 using Code.Audios.Audio.Factory;
-using Code.Common.Helpers;
 using Code.Windows.StaticWindows;
 using TMPro;
+using UnityEngine;
 
 namespace Code.Meta.UI.HUD.PrivacyWindow
 {
@@ -20,7 +19,7 @@ namespace Code.Meta.UI.HUD.PrivacyWindow
             _staticWindowService = staticWindowService;
             _audioFactory = audioFactory;
         }
-        
+
         public void ReturnHome()
         {
             _audioFactory.CreateSound(SoundTypeId.BtnClick);
@@ -28,57 +27,56 @@ namespace Code.Meta.UI.HUD.PrivacyWindow
             _staticWindowService.Open(StaticWindowId.HomeWindow);
         }
 
-        public void SetPrivacyText(TextMeshProUGUI container, string privacyText)
+        public void SetPrivacyText(TextMeshProUGUI container)
         {
-            container.text = StringUpdater.UpdateString(MarkedText(privacyText));
-        }
-
-
-        private string MarkedText(string rawPrivacyText)
-        {
-            var headers = new[]
+            TextAsset jsonText = Resources.Load<TextAsset>("Privacy");
+            if (jsonText == null)
             {
-                "Privacy Policy",
-                "Definitions",
-                "Information Collection and Use",
-                "Use of Data",
-                "Transfer Of Data",
-                "Disclosure Of Data",
-                "Security of Data",
-                "Service Providers",
-                "Links to Other Sites",
-                "Children's Privacy",
-                "Changes to This Privacy Policy"
-            };
-
-            string result = rawPrivacyText;
-            bool isFirstHeader = true;
-
-            foreach (var header in headers)
+                Debug.LogError("Privacy.json не найден в Resources!");
+                return;
+            }
+            string wrappedJson = "{ \"Sections\": " + jsonText.text + "}";
+            PrivacyData privacyData = JsonUtility.FromJson<PrivacyData>(wrappedJson);
+            if (privacyData == null || privacyData.Sections == null)
             {
-                int index = result.IndexOf(header, StringComparison.OrdinalIgnoreCase);
-                if (index >= 0)
-                {
-                    int startOfRemainingText = index + header.Length;
-
-                    while (startOfRemainingText < result.Length &&
-                           (result[startOfRemainingText] == ' ' || result[startOfRemainingText] == '\n' || result[startOfRemainingText] == '\r'))
-                    {
-                        startOfRemainingText++;
-                    }
-
-                    string topSpacing = isFirstHeader ? "" : "\n\n\n";
-
-                    result = result.Substring(0, index) +
-                             $"{topSpacing}<size=160%><b>{header}</b></size>\n" +
-                             result.Substring(startOfRemainingText);
-                    isFirstHeader = false;
-                }
+                Debug.LogError("Ошибка парсинга Privacy.json");
+                return;
             }
 
-            return result;
+            string resultText = "";
+            foreach (var section in privacyData.Sections)
+            {
+                resultText += $"\n<align=\"center\"><size=36><b>{section.Header}</b></size></align>\n";
+                resultText += "<align=\"center\">______________</align>\n\n";
+                string cleanedContent = CleanText(section.Content);
+                resultText += $"<size=28>{cleanedContent}</size>\n\n";
+            }
+
+            container.SetText(resultText.Trim());
         }
 
 
+        private string CleanText(string rawText)
+        {
+            if (string.IsNullOrEmpty(rawText))
+                return "";
+            string result = Regex.Replace(rawText, @"[ \t]+", " ");
+            result = Regex.Replace(result, @"(\r?\n){2,}", "\n");
+            return result.Trim();
+        }
+
+
+        [Serializable]
+        public class PrivacySection
+        {
+            public string Header;
+            public string Content;
+        }
+
+        [Serializable]
+        public class PrivacyData
+        {
+            public List<PrivacySection> Sections;
+        }
     }
 }
